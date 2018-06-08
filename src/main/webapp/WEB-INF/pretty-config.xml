@@ -13,6 +13,11 @@
         <view-id value="/about.xhtml" />
     </url-mapping>
 
+    <url-mapping id="clean-cache">
+        <pattern value="/clean-cache" />
+        <view-id value="/index.xhtml?cleanCache=true" />
+    </url-mapping>
+
 
 
 </pretty-config>

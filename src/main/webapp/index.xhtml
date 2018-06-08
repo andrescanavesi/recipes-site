@@ -3,9 +3,16 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
+
+        <f:metadata>
+            <!-- boolean -->
+            <f:viewParam name="cleanCache" value="#{indexManagedBean.cleanCache}" />
+            <f:viewAction action="#{indexManagedBean.loadIndex}" />
+        </f:metadata>
 
         <!-- Page Header -->
         <header class="masthead" style="background-image: url('resources/theme1/img/home-bg.jpg')">

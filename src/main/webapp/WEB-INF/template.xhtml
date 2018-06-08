@@ -5,6 +5,11 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <h:head>
+
+        <ui:insert name="title">
+            <title>Recipes site</title>
+        </ui:insert>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
@@ -14,10 +19,24 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta name="author" content="recipes-site"/>
+        <meta name="language" content="en"/>
+        <meta name="keywords" content="recipes"/>
+        <meta name="robots" content="Index, Follow"/>
+
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Recipies Site" />
+        <meta property="article:publisher" content="#{indexManagedBean.baseUrl}" />
+        <meta property="article:author" content="#{indexManagedBean.baseUrl}" />
+
 
         <ui:insert name="meta-dynamic">
             <meta name="title" content="Recipes site"/>
             <meta name="description" content="Recipes description"/>
+
+            <meta property="og:title" content="Recipes site" />
+            <meta property="og:description" content="Recipes description" />
+            <meta property="og:url" content="#{indexManagedBean.baseUrl}" />
         </ui:insert>
 
         <!-- Bootstrap core CSS -->

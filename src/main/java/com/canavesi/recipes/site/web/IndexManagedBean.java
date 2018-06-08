@@ -30,6 +30,7 @@ public class IndexManagedBean {
     private Long recipeId;
     private Boolean isProduction;
     private String baseUrl;
+    private Boolean cleanCache = false;
 
     /**
      *
@@ -38,6 +39,10 @@ public class IndexManagedBean {
     public void init() {
         isProduction = DaoConfigs.isProduction();
         baseUrl = DaoConfigs.getBaseUrl();
+        loadRecipes();
+    }
+
+    private void loadRecipes() {
         DaoRecipes daoRecipes = new DaoRecipes();
         recipes = daoRecipes.findAll(0, 100);
     }
@@ -56,6 +61,12 @@ public class IndexManagedBean {
         DaoRecipes daoRecipes = new DaoRecipes();
         daoRecipes.save(recipesToSave);
 
+    }
+
+    public void loadIndex() {
+        if (cleanCache != null && cleanCache) {
+            loadRecipes();
+        }
     }
 
     public void loadRecipe() {
@@ -95,6 +106,14 @@ public class IndexManagedBean {
 
     public String getBaseUrl() {
         return baseUrl;
+    }
+
+    public Boolean getCleanCache() {
+        return cleanCache;
+    }
+
+    public void setCleanCache(Boolean cleanCache) {
+        this.cleanCache = cleanCache;
     }
 
 }
