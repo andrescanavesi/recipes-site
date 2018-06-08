@@ -6,6 +6,11 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <ui:define name="meta-dynamic">
+        <meta name="title" content="#{indexManagedBean.recipeToDisplay.title}"/>
+        <meta name="description" content="#{indexManagedBean.recipeToDisplay.descriptionMeta}"/>
+    </ui:define>
+
     <ui:define name="content">
 
         <h:form id="form">
@@ -21,42 +26,57 @@
         </h:form>
 
         <!-- Page Header -->
-        <header class="masthead" style="background-image: url('resources/theme1/img/post-bg.jpg')">
+        <header class="masthead">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="post-heading">
-                            <h1> #{indexManagedBean.recipeToDisplay.title}</h1>
-                            <h2 class="subheading"> #{indexManagedBean.recipeToDisplay.description}</h2>
-                            <span class="meta">Posted on #{indexManagedBean.recipeToDisplay.createdAtFormatted}</span>
+
                         </div>
                     </div>
                 </div>
             </div>
         </header>
 
-
-        <!-- Post Content -->
+        <!-- Recipe Content -->
         <article>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="post-heading">
+                            <h1> #{indexManagedBean.recipeToDisplay.title}</h1>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <p>#{indexManagedBean.recipeToDisplay.description}</p>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
                         <h2 class="section-heading">Ingredients</h2>
                         <ul>
-                            <ui:repeat var="ingredient" value="#{data.ingredientsArray}"  varStatus="dataStatus">
+                            <ui:repeat var="ingredient" value="#{indexManagedBean.recipeToDisplay.ingredientsArray}"  varStatus="dataStatus">
                                 <li>#{ingredient} </li>
                             </ui:repeat>
                         </ul>
                         <h2 class="section-heading">Steps</h2>
                         <ul>
-                            <ui:repeat var="step" value="#{data.stepsArray}"  varStatus="dataStatus">
+                            <ui:repeat var="step" value="#{indexManagedBean.recipeToDisplay.stepsArray}"  varStatus="dataStatus">
                                 <li>#{step} </li>
                             </ui:repeat>
                         </ul>
 
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <span class="meta">Posted on #{indexManagedBean.recipeToDisplay.createdAtFormatted}</span>
                     </div>
                 </div>
             </div>

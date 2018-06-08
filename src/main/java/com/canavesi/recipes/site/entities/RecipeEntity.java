@@ -1,6 +1,7 @@
 package com.canavesi.recipes.site.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -17,14 +18,17 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     private String title;
     private String titleForUrl;
+    @Column(length = 1000)
     private String description;
     /**
      * comma separated
      */
+    @Column(length = 1000)
     private String ingredients;
     /**
      * comma separated
      */
+    @Column(length = 1000)
     private String steps;
     /**
      * Could be a url or base64 encoded image
@@ -49,6 +53,17 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getDescriptionMeta() {
+        if (description == null) {
+            return null;
+        } else if (description.length() >= 100) {
+            return description.substring(0, 99) + "...";
+        } else {
+            return description;
+        }
+
     }
 
     public void setDescription(String description) {

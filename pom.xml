@@ -15,12 +15,25 @@
     </properties>
 
     <dependencies>
+
+        <!-- To override urls, instead of recipe.xhtml?id=1234 to have /recipe/1234 for JSF 2.x. -->
+        <dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-servlet</artifactId>
+            <version>3.4.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-config-prettyfaces</artifactId>
+            <version>3.4.1.Final</version>
+        </dependency>
+        <!-- ////////////////////// -->
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.1.4</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.hibernate</groupId>

@@ -1,5 +1,6 @@
 package com.canavesi.recipes.site.web;
 
+import com.canavesi.recipes.site.dao.DaoConfigs;
 import com.canavesi.recipes.site.dao.DaoRecipes;
 import com.canavesi.recipes.site.entities.RecipeEntity;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +20,7 @@ import javax.faces.context.FacesContext;
  * @author Andres Canavesi
  */
 @Named(value = "indexManagedBean")
-@SessionScoped
+@ApplicationScoped
 @ManagedBean
 public class IndexManagedBean {
 
@@ -26,12 +28,16 @@ public class IndexManagedBean {
     private List<RecipeEntity> recipes;
     private RecipeEntity recipeToDisplay;
     private Long recipeId;
+    private Boolean isProduction;
+    private String baseUrl;
 
     /**
      *
      */
     @PostConstruct
     public void init() {
+        isProduction = DaoConfigs.isProduction();
+        baseUrl = DaoConfigs.getBaseUrl();
         DaoRecipes daoRecipes = new DaoRecipes();
         recipes = daoRecipes.findAll(0, 100);
     }
@@ -59,11 +65,6 @@ public class IndexManagedBean {
             throw new IllegalArgumentException("Missing recipeId");
         }
 
-//        Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-//        if (paramMap.get("id") == null) {
-//            throw new IllegalArgumentException("Missing recipe id");
-//        }
-//        String id = paramMap.get("id");
         for (RecipeEntity recipe : recipes) {
             if (recipe.getId().equals(recipeId)) {
                 recipeToDisplay = recipe;
@@ -86,6 +87,14 @@ public class IndexManagedBean {
 
     public void setRecipeId(Long recipeId) {
         this.recipeId = recipeId;
+    }
+
+    public Boolean getIsProduction() {
+        return isProduction;
+    }
+
+    public String getBaseUrl() {
+        return baseUrl;
     }
 
 }

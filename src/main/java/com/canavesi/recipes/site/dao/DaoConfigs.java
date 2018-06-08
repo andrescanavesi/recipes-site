@@ -40,4 +40,24 @@ public class DaoConfigs {
         return value;
     }
 
+    public static String getBaseUrl() {
+        String value = System.getenv("BASE_URL");
+        if (value == null) {
+            value = "http://localhost:8080/recipes-site";
+        }
+        return value;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static boolean isProduction() {
+        String value = System.getenv("IS_PRODUCTION");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
 }
