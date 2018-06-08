@@ -6,6 +6,7 @@ import com.canavesi.recipes.site.entities.RecipeEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
@@ -26,6 +27,7 @@ public class IndexManagedBean {
 
     private static final Logger LOG = Logger.getLogger(IndexManagedBean.class.getName());
     private List<RecipeEntity> recipes;
+    private List<RecipeEntity> featuredRecipes;
     private RecipeEntity recipeToDisplay;
     private Long recipeId;
     private Boolean isProduction;
@@ -45,6 +47,12 @@ public class IndexManagedBean {
     private void loadRecipes() {
         DaoRecipes daoRecipes = new DaoRecipes();
         recipes = daoRecipes.findAll(0, 100);
+        featuredRecipes = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int random = new Random().nextInt(recipes.size());
+            featuredRecipes.add(recipes.get(random));
+        }
+
     }
 
     public void install() {
@@ -114,6 +122,14 @@ public class IndexManagedBean {
 
     public void setCleanCache(Boolean cleanCache) {
         this.cleanCache = cleanCache;
+    }
+
+    public List<RecipeEntity> getFeaturedRecipes() {
+        return featuredRecipes;
+    }
+
+    public void setFeaturedRecipes(List<RecipeEntity> featuredRecipes) {
+        this.featuredRecipes = featuredRecipes;
     }
 
 }

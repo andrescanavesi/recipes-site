@@ -43,7 +43,10 @@ public class DaoConfigs {
     public static String getBaseUrl() {
         String value = System.getenv("BASE_URL");
         if (value == null) {
-            value = "http://localhost:8080/recipes-site";
+            value = "http://localhost:8080/recipes-site/";
+        }
+        if (!value.endsWith("/")) {
+            value += "/";
         }
         return value;
     }

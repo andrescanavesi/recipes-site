@@ -1,0 +1,26 @@
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <!-- Featured recipes -->
+    <div class="container">
+        <div class="row">
+
+
+            <ui:repeat var="data" value="#{indexManagedBean.featuredRecipes}"  >
+                <div class="col-sm">
+                    <a href="#{indexManagedBean.baseUrl}recipe/#{data.id}/#{data.titleForUrl}">
+                        <p class="h4">
+                            #{data.title}
+                        </p>
+                        <img src="#{indexManagedBean.recipeToDisplay.featuredImage}" class="img-thumbnail rounded" alt="Recipe image"/>
+
+                    </a>
+                    <p class="lead">
+                        #{data.descriptionMeta}
+                    </p>
+                </div>
+            </ui:repeat>
+        </div>
+    </div>
+
+</html>
