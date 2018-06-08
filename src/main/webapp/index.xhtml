@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+
+        <!-- Page Header -->
+        <header class="masthead" style="background-image: url('resources/theme1/img/home-bg.jpg')">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h1>Clean Blog</h1>
+                            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+
+                    <ui:repeat var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus">
+
+                        <div class="post-preview">
+                            <a href="recipe.xhtml?id=#{data.id}">
+                                <h2 class="post-title">
+                                    #{data.title}
+                                </h2>
+                                <h3 class="post-subtitle">
+                                    #{data.description}
+                                </h3>
+                            </a>
+                            <h3>Ingredients</h3>
+                            <ul>
+                                <ui:repeat var="ingredient" value="#{data.ingredientsArray}"  varStatus="dataStatus">
+                                    <li>#{ingredient} </li>
+                                </ui:repeat>
+                            </ul>
+                            <h3>Steps</h3>
+                            <ul>
+                                <ui:repeat var="step" value="#{data.stepsArray}"  varStatus="dataStatus">
+                                    <li>#{step} </li>
+                                </ui:repeat>
+                            </ul>
+                            <p class="post-meta">Posted on #{data.createdAtFormatted}</p>
+                        </div>
+                        <hr/>
+                    </ui:repeat>
+
+                    <!-- Pager -->
+                    <div class="clearfix">
+                        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+
+    </ui:define>
+
+
+</ui:composition>
+
+

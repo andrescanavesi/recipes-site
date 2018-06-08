@@ -1,0 +1,7 @@
+{
+    "name": "Recipes Site",
+    "description": "A recipes site built using Java web technologies",
+    "image": "heroku/java",
+    "addons": ["heroku-postgresql"]
+}
+

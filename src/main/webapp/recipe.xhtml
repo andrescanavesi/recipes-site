@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <h:form id="form">
+
+            <f:metadata>
+                <f:viewParam name="id" value="#{indexManagedBean.recipeId}" />
+                <f:viewAction action="#{indexManagedBean.loadRecipe}" />
+            </f:metadata>
+
+
+
+
+        </h:form>
+
+        <!-- Page Header -->
+        <header class="masthead" style="background-image: url('resources/theme1/img/post-bg.jpg')">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="post-heading">
+                            <h1> #{indexManagedBean.recipeToDisplay.title}</h1>
+                            <h2 class="subheading"> #{indexManagedBean.recipeToDisplay.description}</h2>
+                            <span class="meta">Posted on #{indexManagedBean.recipeToDisplay.createdAtFormatted}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+
+
+                        <h2 class="section-heading">Ingredients</h2>
+                        <ul>
+                            <ui:repeat var="ingredient" value="#{data.ingredientsArray}"  varStatus="dataStatus">
+                                <li>#{ingredient} </li>
+                            </ui:repeat>
+                        </ul>
+                        <h2 class="section-heading">Steps</h2>
+                        <ul>
+                            <ui:repeat var="step" value="#{data.stepsArray}"  varStatus="dataStatus">
+                                <li>#{step} </li>
+                            </ui:repeat>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <hr/>
+
+
+
+    </ui:define>
+
+
+</ui:composition>
+
+
