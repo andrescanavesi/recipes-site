@@ -1,0 +1,22 @@
+<ui:composition
+
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <p:outputPanel rendered="#{indexManagedBean.isProduction}">
+
+        <!-- Must be included between <head> </head> tags  -->
+        <!-- It will display adds automatically in the page -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-9559827534748081",
+                enable_page_level_ads: true
+            });
+        </script>
+    </p:outputPanel>
+
+</ui:composition>
