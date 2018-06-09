@@ -6,6 +6,9 @@
 
     <h:head>
 
+        <ui:include src="google-analytics.xhtml"/>
+        <ui:include src="google-adsense.xhtml"/>
+
         <ui:insert name="title">
             <title>Recetas City</title>
         </ui:insert>
@@ -18,7 +21,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta name="author" content="recetas-city.com"/>
         <meta name="language" content="es"/>
-        <meta name="keywords" content="recipes"/>
+        <meta name="keywords" content="recetas,cocina,comida"/>
         <meta name="robots" content="Index, Follow"/>
 
         <meta property="og:locale" content="es_ES" />
@@ -30,10 +33,10 @@
 
         <ui:insert name="meta-dynamic">
             <meta name="title" content="Recetas City"/>
-            <meta name="description" content="Las mejores recetas"/>
+            <meta name="description" content="Las mejores recetas de cocina"/>
 
             <meta property="og:title" content="Recetas City" />
-            <meta property="og:description" content="Las mejores recetas" />
+            <meta property="og:description" content="Las mejores recetas de cocina" />
             <meta property="og:url" content="#{indexManagedBean.baseUrl}" />
         </ui:insert>
 
@@ -50,7 +53,7 @@
 
         <link rel="shortcut icon" type="image/ico" href="#{indexManagedBean.baseUrl}resources/theme1/img/favicon.ico"/>
 
-        <ui:include src="google-adsense.xhtml"/>
+
     </h:head>
 
     <h:body>
@@ -65,7 +68,7 @@
 
 
         <ui:include src="footer.xhtml"/>
-        <ui:include src="google-analytics.xhtml"/>
+
 
         <!-- Bootstrap core JavaScript -->
         <script src="#{indexManagedBean.baseUrl}resources/theme1/vendor/jquery/jquery.min.js"></script>
