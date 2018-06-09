@@ -1,12 +1,11 @@
 <html xmlns = "http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- Featured recipes -->
     <div class="container">
         <div class="row">
-
-
-            <ui:repeat var="data" value="#{indexManagedBean.featuredRecipes}"  >
+            <ui:repeat var="data" value="#{indexManagedBean.featuredRecipes}" varStatus="status" >
                 <div class="col-sm">
                     <a href="#{indexManagedBean.baseUrl}recipe/#{data.id}/#{data.titleForUrl}">
                         <p class="h4">
@@ -19,6 +18,7 @@
                         #{data.descriptionMeta}
                     </p>
                 </div>
+                <p:outputPanel rendered="#{status.index eq 2}" styleClass="w-100" />
             </ui:repeat>
         </div>
     </div>

@@ -45,10 +45,6 @@
                 <f:viewParam name="id" value="#{indexManagedBean.recipeId}" />
                 <f:viewAction action="#{indexManagedBean.loadRecipe}" />
             </f:metadata>
-
-
-
-
         </h:form>
 
         <!-- Page Header -->
@@ -96,7 +92,7 @@
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="row">
                             <div class="col">
-                                <h2 class="section-heading">Ingredients</h2>
+                                <h4>Ingredients</h4>
                                 <ul>
                                     <ui:repeat var="ingredient" value="#{indexManagedBean.recipeToDisplay.ingredientsArray}"  varStatus="dataStatus">
                                         <li>#{ingredient} </li>
@@ -112,7 +108,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <h2 class="section-heading">Steps</h2>
+                                <h4>Steps</h4>
                                 <ul>
                                     <ui:repeat var="step" value="#{indexManagedBean.recipeToDisplay.stepsArray}"  varStatus="dataStatus">
                                         <li>#{step} </li>
@@ -130,7 +126,10 @@
 
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
-                        <span class="meta">Posted on #{indexManagedBean.recipeToDisplay.createdAtFormatted}</span>
+                        <div class="post-preview">
+                            <span class="post-meta">Posted on #{indexManagedBean.recipeToDisplay.createdAtFormatted}</span>
+                        </div>
+
                     </div>
                 </div>
             </div>

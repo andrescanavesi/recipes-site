@@ -182,7 +182,7 @@ img::-moz-selection {
 header.masthead {
     margin-bottom: 15px;
     background: no-repeat center center;
-    background-color: #cccccc;
+    background-color: #FF0000;
     background-attachment: scroll;
     position: relative;
     -webkit-background-size: cover;
@@ -302,7 +302,7 @@ header.masthead .post-heading .meta a {
 }
 
 .post-preview > .post-meta {
-    font-size: 18px;
+    font-size: 12px;
     font-style: italic;
     margin-top: 0;
     color: #868e96;
@@ -387,7 +387,9 @@ form .form-group:first-child .floating-label-form-group {
 }
 
 footer {
+    margin-top: 20px;
     padding: 50px 0 65px;
+    background-color: #3f3f3f;
 }
 
 footer .list-inline {

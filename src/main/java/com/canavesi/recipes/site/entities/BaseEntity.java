@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd");
+
     /**
      *
      */
@@ -30,7 +32,7 @@ public abstract class BaseEntity implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private Date updatedAt = new Date();
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd");
+    private Boolean active;
 
     /**
      *
@@ -92,6 +94,14 @@ public abstract class BaseEntity implements Serializable {
      */
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @Override
