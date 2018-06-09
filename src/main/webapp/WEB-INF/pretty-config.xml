@@ -4,12 +4,12 @@
                       http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
     <url-mapping id="recipe">
-        <pattern value="/recipe/#{id}/#{title}" />
+        <pattern value="/receta/#{id}/#{title}" />
         <view-id value="/recipe.xhtml" />
     </url-mapping>
 
     <url-mapping id="about">
-        <pattern value="/about" />
+        <pattern value="/sobre-este-sitio" />
         <view-id value="/about.xhtml" />
     </url-mapping>
 

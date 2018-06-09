@@ -21,8 +21,8 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="site-heading">
-                            <h1>Recipes</h1>
-                            <span class="subheading">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                            <h1>Recetas City</h1>
+                            <span class="subheading">Las mejores recetas de cocina</span>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <ui:repeat var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus">
 
                         <div class="post-preview">
-                            <a href="recipe/#{data.id}/#{data.titleForUrl}">
+                            <a href="receta/#{data.id}/#{data.titleForUrl}">
                                 <h2 class="post-title">
                                     #{data.title}
                                 </h2>
@@ -45,7 +45,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <img src="#{data.featuredImage}" class="img-thumbnail rounded" alt="Recipe image"/>
+                                    <img src="#{data.featuredImage}" class="img-thumbnail rounded" alt="Imagen receta"/>
                                 </div>
                                 <div class="col-8">
                                     #{data.description}
@@ -55,7 +55,7 @@
 
                             <div class="row mt-3">
                                 <div class="col">
-                                    <h4>Ingredients</h4>
+                                    <h4>Ingredientes</h4>
                                     <ul>
                                         <ui:repeat var="ingredient" value="#{data.ingredientsArray}"  varStatus="dataStatus">
                                             <li>#{ingredient} </li>
@@ -63,7 +63,7 @@
                                     </ul>
                                 </div>
                                 <div class="col">
-                                    <h4>Steps</h4>
+                                    <h4>Pasos</h4>
                                     <ul>
                                         <ui:repeat var="step" value="#{data.stepsArray}"  varStatus="dataStatus">
                                             <li>#{step} </li>
@@ -74,14 +74,14 @@
 
 
 
-                            <p class="post-meta">Posted on #{data.createdAtFormatted}</p>
+                            <p class="post-meta">Posteada el dia #{data.createdAtFormatted}</p>
                         </div>
                         <hr/>
                     </ui:repeat>
 
                     <!-- Pager -->
                     <div class="clearfix">
-                        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                        <a class="btn btn-primary float-right" href="#">Mas recetas &rarr;</a>
                     </div>
                 </div>
             </div>

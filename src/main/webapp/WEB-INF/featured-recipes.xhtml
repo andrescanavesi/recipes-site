@@ -7,11 +7,11 @@
         <div class="row">
             <ui:repeat var="data" value="#{indexManagedBean.featuredRecipes}" varStatus="status" >
                 <div class="col-sm">
-                    <a href="#{indexManagedBean.baseUrl}recipe/#{data.id}/#{data.titleForUrl}">
+                    <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
                         <p class="h4">
                             #{data.title}
                         </p>
-                        <img src="#{indexManagedBean.recipeToDisplay.featuredImage}" class="img-thumbnail rounded" alt="Recipe image"/>
+                        <img src="#{indexManagedBean.recipeToDisplay.featuredImage}" class="img-thumbnail rounded" alt="Imagen receta"/>
 
                     </a>
                     <p class="lead">
