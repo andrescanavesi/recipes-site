@@ -28,7 +28,7 @@ public class RecipeEntity extends BaseEntity implements Serializable {
     /**
      * comma separated
      */
-    @Column(length = 1000)
+    @Column(length = 2000)
     private String steps;
     /**
      * Could be a url or base64 encoded image
@@ -76,7 +76,7 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     public String[] getIngredientsArray() {
         if (ingredients != null) {
-            return ingredients.split(",");
+            return ingredients.split("\n");
         }
         return null;
 
@@ -92,7 +92,7 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     public String[] getStepsArray() {
         if (steps != null) {
-            return steps.split(",");
+            return steps.split("\n");
         }
         return null;
 
