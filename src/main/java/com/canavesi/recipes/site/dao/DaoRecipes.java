@@ -24,7 +24,7 @@ public class DaoRecipes extends DaoBase<RecipeEntity> {
     public List<RecipeEntity> findAll(int start, int end) {
         LOG.info("Getting recipes...");
         StringBuilder query = new StringBuilder();
-        query.append("SELECT u FROM ").append(type.getSimpleName()).append(" u ").append(" ORDER BY createdAt DESC ");
+        query.append("SELECT u FROM ").append(type.getSimpleName()).append(" u ").append(" WHERE active=TRUE ORDER BY createdAt DESC ");
         Map parameters = new HashMap(); //no parameters
         return findWithQueryString(query.toString(), parameters, start, end);
     }
