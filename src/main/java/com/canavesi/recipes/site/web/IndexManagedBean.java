@@ -5,15 +5,12 @@ import com.canavesi.recipes.site.dao.DaoRecipes;
 import com.canavesi.recipes.site.entities.RecipeEntity;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 /**
  * index.xhtml controller
@@ -21,7 +18,7 @@ import javax.faces.context.FacesContext;
  * @author Andres Canavesi
  */
 @Named(value = "indexManagedBean")
-@ApplicationScoped
+@SessionScoped
 @ManagedBean
 public class IndexManagedBean {
 
