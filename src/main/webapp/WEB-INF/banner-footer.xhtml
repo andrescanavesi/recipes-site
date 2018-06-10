@@ -3,7 +3,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <p:outputPanel rendered="#{indexManagedBean.isProduction}">
+    <p:outputPanel rendered="#{indexManagedBean.isProduction && indexManagedBean.showAdFooter}">
 
         <!-- Banner footer -->
         <div class="container">

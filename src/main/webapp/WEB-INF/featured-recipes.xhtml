@@ -18,9 +18,12 @@
                         <img src="#{data.featuredImage}" class="img-thumbnail rounded" alt="Imagen receta"/>
 
                     </a>
-                    <p class="lead">
-                        #{data.descriptionMeta}
-                    </p>
+                    <span class="summary">
+                        #{data.descriptionMeta}...
+                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
+                            seguir leyendo
+                        </a>
+                    </span>
                 </div>
                 <p:outputPanel rendered="#{status.index eq 2}" styleClass="w-100" />
             </ui:repeat>

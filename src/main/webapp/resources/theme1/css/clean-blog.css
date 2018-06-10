@@ -7,7 +7,7 @@ body {
 p {
     line-height: 1.5;
     margin: 8px 0;
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
 }
 
@@ -40,6 +40,15 @@ ul{
 a:focus, a:hover {
     color: #0085A1;
     text-decoration: none;
+}
+
+.summary{
+    font-size: 1rem;
+}
+.summary a{
+    color: #007bff;
+    text-decoration: none;
+
 }
 
 blockquote {

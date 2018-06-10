@@ -63,4 +63,12 @@ public class DaoConfigs {
         return Boolean.valueOf(value);
     }
 
+    public static boolean getShowAdFooter() {
+        String value = System.getenv("SHOW_AD_FOOTER");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
 }

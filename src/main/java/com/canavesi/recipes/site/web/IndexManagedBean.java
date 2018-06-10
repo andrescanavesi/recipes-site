@@ -28,6 +28,7 @@ public class IndexManagedBean {
     private RecipeEntity recipeToDisplay;
     private Long recipeId;
     private Boolean isProduction;
+    private Boolean showAdFooter;
     private String baseUrl;
     private Boolean cleanCache = false;
 
@@ -38,6 +39,7 @@ public class IndexManagedBean {
     public void init() {
         LOG.info("Init");
         isProduction = DaoConfigs.isProduction();
+        showAdFooter = DaoConfigs.getShowAdFooter();
         baseUrl = DaoConfigs.getBaseUrl();
         loadRecipes();
     }
@@ -141,6 +143,10 @@ public class IndexManagedBean {
 
     public void setFeaturedRecipes(List<RecipeEntity> featuredRecipes) {
         this.featuredRecipes = featuredRecipes;
+    }
+
+    public Boolean getShowAdFooter() {
+        return showAdFooter;
     }
 
 }
