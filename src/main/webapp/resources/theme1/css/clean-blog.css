@@ -441,3 +441,18 @@ footer .copyright {
     font-size: 16px;
     padding: 25px 35px;
 }
+
+.custom-btn-social{
+    padding: 10px 20px;
+    font-size: 16px;
+
+}
+.custom-btn-social-text{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.btn-whatsapp{
+    background-color: #28a745!important;
+    color: #ffffff;
+}
+

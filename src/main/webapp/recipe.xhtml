@@ -121,7 +121,26 @@
 
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
+                        <a class="btn"  href="https://www.facebook.com/sharer/sharer.php?u=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}" target="_blank" rel="noopener">
+                            <button class="fa fa-facebook btn-facebook custom-btn-social">
+                                <span class="pl-2 custom-btn-social-text">Compartir</span>
+                            </button>
+                        </a>
+
+                        <a class="btn"  href="whatsapp://send?text=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}" target="_blank" rel="noopener">
+                            <button class="fa fa-whatsapp btn-whatsapp custom-btn-social">
+                                <span class="pl-2 custom-btn-social-text">Compartir</span>
+                            </button>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="post-preview">
+
                             <span class="post-meta">Creada el dia #{indexManagedBean.recipeToDisplay.createdAtFormatted}</span>
                         </div>
 
