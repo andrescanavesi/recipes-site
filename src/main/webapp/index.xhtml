@@ -37,7 +37,7 @@
                     <ui:repeat var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus">
 
                         <div class="post-preview">
-                            <a href="receta/#{data.id}/#{data.titleForUrl}">
+                            <a href="receta/#{data.id}/#{data.titleForUrl}?utm_source=index_title&amp;utm_medium=web">
                                 <h2 class="post-title">
                                     #{data.title}
                                 </h2>
@@ -71,9 +71,6 @@
                                     </ul>
                                 </div>
                             </div>
-
-
-
                             <p class="post-meta">Creada el dia #{data.createdAtFormatted}</p>
                         </div>
                         <hr/>

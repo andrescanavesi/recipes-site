@@ -11,7 +11,7 @@
             <div class="w-100" />
             <ui:repeat var="data" value="#{indexManagedBean.featuredRecipes}" varStatus="status" >
                 <div class="col-sm">
-                    <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
+                    <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=featured_recipes&amp;utm_medium=web">
                         <p class="h4">
                             #{data.title}
                         </p>
@@ -20,7 +20,7 @@
                     </a>
                     <span class="summary">
                         #{data.descriptionMeta}...
-                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
+                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=featured_recipes_continue_reading&amp;utm_medium=web">
                             seguir leyendo
                         </a>
                     </span>
