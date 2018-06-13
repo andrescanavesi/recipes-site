@@ -6,6 +6,34 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <ui:define name="title">
+        <title>Recetas City: #{indexManagedBean.homeTitle}</title>
+    </ui:define>
+
+    <ui:define name="meta-dynamic">
+        <meta name="title" content="#{indexManagedBean.homeTitle}"/>
+        <meta name="description" content="#{indexManagedBean.homeDescription}"/>
+        <meta property="og:title" content="#{indexManagedBean.homeTitle}" />
+        <meta property="og:description" content="#{indexManagedBean.homeDescription}" />
+        <meta property="og:url" content="#{indexManagedBean.baseUrl}" />
+        <meta property="og:image" content="#{indexManagedBean.homeUrlImage}" />
+        <meta property="article:modified_time" content="#{indexManagedBean.homeUpdatedAtFormatted}" />
+
+        <script type="application/ld+json">
+            {
+            "@context": "http://schema.org/",
+            "@type": "WebSite",
+            "name": "#{indexManagedBean.homeTitle}",
+            "image": [
+            "#{indexManagedBean.homeUrlImage}"
+            ],
+            "datePublished": "#{indexManagedBean.homeUpdatedAtFormatted}",
+            "description": "#{indexManagedBean.homeDescription}",
+            "keywords": "receta,cocina,comida,facil"
+            }
+        </script>
+    </ui:define>
+
     <ui:define name="content">
 
         <f:metadata>

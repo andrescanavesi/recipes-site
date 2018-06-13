@@ -31,6 +31,10 @@ public class IndexManagedBean {
     private Boolean showAdFooter;
     private String baseUrl;
     private Boolean cleanCache = false;
+    private String homeTitle;
+    private String homeDescription;
+    private String homeUrlImage;
+    private String homeUpdatedAtFormatted;
 
     /**
      *
@@ -61,6 +65,12 @@ public class IndexManagedBean {
             } while (randomAgain);
 
         }
+
+        RecipeEntity firstRecipe = recipes.get(0);
+        homeTitle = firstRecipe.getTitle();
+        homeDescription = firstRecipe.getDescriptionMeta();
+        homeUrlImage = firstRecipe.getFeaturedImage();
+        homeUpdatedAtFormatted = firstRecipe.getUpdatedAtFormatted();
 
     }
 
@@ -147,6 +157,34 @@ public class IndexManagedBean {
 
     public Boolean getShowAdFooter() {
         return showAdFooter;
+    }
+
+    public String getHomeTitle() {
+        return homeTitle;
+    }
+
+    public void setHomeTitle(String homeTitle) {
+        this.homeTitle = homeTitle;
+    }
+
+    public String getHomeDescription() {
+        return homeDescription;
+    }
+
+    public void setHomeDescription(String homeDescription) {
+        this.homeDescription = homeDescription;
+    }
+
+    public String getHomeUrlImage() {
+        return homeUrlImage;
+    }
+
+    public void setHomeUrlImage(String homeUrlImage) {
+        this.homeUrlImage = homeUrlImage;
+    }
+
+    public String getHomeUpdatedAtFormatted() {
+        return homeUpdatedAtFormatted;
     }
 
 }
