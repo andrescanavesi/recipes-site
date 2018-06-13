@@ -7,17 +7,17 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-        <title>#{indexManagedBean.recipeToDisplay.title}</title>
+        <title>Recetas City: #{indexManagedBean.recipeToDisplay.title}</title>
     </ui:define>
 
     <ui:define name="meta-dynamic">
         <link rel="canonical" href="#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}" />
 
-        <meta name="title" content="#{indexManagedBean.recipeToDisplay.title}"/>
-        <meta name="description" content="#{indexManagedBean.recipeToDisplay.descriptionMeta}"/>
+        <meta name="title" content="Recetas City: #{indexManagedBean.recipeToDisplay.title}"/>
+        <meta name="description" content="Recetas City: #{indexManagedBean.recipeToDisplay.descriptionMeta}"/>
 
-        <meta property="og:title" content="#{indexManagedBean.recipeToDisplay.title}" />
-        <meta property="og:description" content="#{indexManagedBean.recipeToDisplay.descriptionMeta}" />
+        <meta property="og:title" content="Recetas City: #{indexManagedBean.recipeToDisplay.title}" />
+        <meta property="og:description" content="Recetas City: #{indexManagedBean.recipeToDisplay.descriptionMeta}" />
         <meta property="og:url" content="#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}" />
         <meta property="article:published_time" content="#{indexManagedBean.recipeToDisplay.createdAtFormatted}" />
         <meta property="article:modified_time" content="#{indexManagedBean.recipeToDisplay.updatedAtFormatted}" />
@@ -31,7 +31,7 @@
             "#{indexManagedBean.recipeToDisplay.featuredImage}"
             ],
             "datePublished": "#{indexManagedBean.recipeToDisplay.createdAtFormatted}",
-            "description": "#{indexManagedBean.recipeToDisplay.descriptionMeta}",
+            "description": "Recetas City: #{indexManagedBean.recipeToDisplay.descriptionMeta}",
             "keywords": "receta,cocina,comida,facil"
             }
         </script>
