@@ -30,10 +30,9 @@ public class RecipeEntity extends BaseEntity implements Serializable {
      */
     @Column(length = 2000)
     private String steps;
-    /**
-     * Could be a url or base64 encoded image
-     */
-    private String featuredImage;
+    private String featuredImageName;
+    private String featuredFullImageUrl;
+    private String featuredThumbnailImageUrl;
 
     public String getTitle() {
         return title;
@@ -102,12 +101,28 @@ public class RecipeEntity extends BaseEntity implements Serializable {
         this.steps = steps;
     }
 
-    public String getFeaturedImage() {
-        return featuredImage;
+    public String getFeaturedFullImageUrl() {
+        return featuredFullImageUrl;
     }
 
-    public void setFeaturedImage(String featuredImage) {
-        this.featuredImage = featuredImage;
+    public void setFeaturedFullImageUrl(String featuredFullImageUrl) {
+        this.featuredFullImageUrl = featuredFullImageUrl;
+    }
+
+    public String getFeaturedThumbnailImageUrl() {
+        return featuredThumbnailImageUrl;
+    }
+
+    public void setFeaturedThumbnailImageUrl(String featuredThumbnailImageUrl) {
+        this.featuredThumbnailImageUrl = featuredThumbnailImageUrl;
+    }
+
+    public String getFeaturedImageName() {
+        return featuredImageName;
+    }
+
+    public void setFeaturedImageName(String featuredImageName) {
+        this.featuredImageName = featuredImageName;
     }
 
 }

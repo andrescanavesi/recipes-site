@@ -28,9 +28,9 @@ public class DaoConfigs {
 
     /**
      *
-     * @return example "40.0"
+     * @return
      */
-    public static String getDatabaseUrl() {
+    public static String getDataBaseUrl() {
         String value = System.getenv("DATABASE_URL");
         if (value == null) {
             //since this is a sensitive data we do not return a default value
@@ -69,6 +69,17 @@ public class DaoConfigs {
             return false;
         }
         return Boolean.valueOf(value);
+    }
+
+    public static String getImagesBaseUrl() {
+        String value = System.getenv("IMAGES_BASE_URL");
+        if (value == null) {
+            value = "https://res.cloudinary.com/dniiru5xy/image/upload/";
+        }
+        if (!value.endsWith("/")) {
+            value += "/";
+        }
+        return value;
     }
 
 }

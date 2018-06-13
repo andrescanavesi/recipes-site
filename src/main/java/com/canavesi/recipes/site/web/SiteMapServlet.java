@@ -1,7 +1,7 @@
 package com.canavesi.recipes.site.web;
 
 import com.canavesi.recipes.site.dao.DaoConfigs;
-import com.canavesi.recipes.site.dao.DaoRecipes;
+import com.canavesi.recipes.site.dao.DaoRecipes3;
 import com.canavesi.recipes.site.entities.RecipeEntity;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,7 +32,7 @@ public class SiteMapServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/xml;charset=UTF-8");
 
-        DaoRecipes daoRecipes = new DaoRecipes();
+        DaoRecipes3 daoRecipes = new DaoRecipes3();
         List<RecipeEntity> recipes = daoRecipes.findAll(0, 1000);
         String baseUrl = DaoConfigs.getBaseUrl();
 
@@ -59,7 +59,7 @@ public class SiteMapServlet extends HttpServlet {
                 out.println("<url> ");
                 out.println("<loc>" + baseUrl + "/receta/" + recipe.getId() + "/" + recipe.getTitleForUrl() + "</loc> ");
                 out.println("<image:image>");
-                out.println("<image:loc>" + recipe.getFeaturedImage() + "</image:loc>");
+                out.println("<image:loc>" + recipe.getFeaturedFullImageUrl() + "</image:loc>");
                 out.println("<image:caption>" + recipe.getTitle() + "</image:caption>");
                 out.println("</image:image>");
                 out.println("</url> ");

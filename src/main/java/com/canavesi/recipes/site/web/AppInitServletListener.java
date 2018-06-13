@@ -27,7 +27,7 @@ public class AppInitServletListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
         LOG.log(Level.INFO, "\n***** Initializing {0}", AppInitServletListener.class.getSimpleName());
-        emf = Persistence.createEntityManagerFactory("myPU");
+        //emf = Persistence.createEntityManagerFactory("myPU");
         LOG.info("\n***** App initialized");
     }
 
