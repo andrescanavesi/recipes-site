@@ -19,36 +19,17 @@ public class AppInitServletListener implements ServletContextListener {
 
     private static final Logger LOG = Logger.getLogger(AppInitServletListener.class.getName());
 
-    /**
-     * To manage persistence
-     */
-    private static EntityManagerFactory emf;
-
     @Override
     public void contextInitialized(ServletContextEvent event) {
         LOG.log(Level.INFO, "\n***** Initializing {0}", AppInitServletListener.class.getSimpleName());
-        //emf = Persistence.createEntityManagerFactory("myPU");
         LOG.info("\n***** App initialized");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent event) {
         LOG.log(Level.INFO, "\n***** Destroying {0}", AppInitServletListener.class.getSimpleName());
-        if (emf != null) {
-            emf.close();
-        }
 
         LOG.info("\n***** App destroyed");
     }
 
-    /**
-     *
-     * @return
-     */
-    public static EntityManager createEntityManager() {
-        if (emf == null) {
-            throw new IllegalStateException("Context is not initialized yet.");
-        }
-        return emf.createEntityManager();
-    }
 }

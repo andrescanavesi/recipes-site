@@ -1,11 +1,13 @@
 package com.canavesi.recipes.site.web;
 
 import com.canavesi.recipes.site.dao.DaoConfigs;
-import com.canavesi.recipes.site.dao.DaoRecipes3;
+import com.canavesi.recipes.site.dao.DaoRecipes;
 import com.canavesi.recipes.site.entities.RecipeEntity;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,11 +31,10 @@ public class SiteMapServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/xml;charset=UTF-8");
 
-        DaoRecipes3 daoRecipes = new DaoRecipes3();
-        List<RecipeEntity> recipes = daoRecipes.findAll(0, 1000);
+        List<RecipeEntity> recipes = DaoRecipes.getInstance().findAll(0, 1000);
         String baseUrl = DaoConfigs.getBaseUrl();
 
         /**
@@ -81,7 +82,11 @@ public class SiteMapServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            throw new ServletException(ex);
+        }
     }
 
     /**
@@ -95,7 +100,11 @@ public class SiteMapServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            throw new ServletException(ex);
+        }
     }
 
     /**

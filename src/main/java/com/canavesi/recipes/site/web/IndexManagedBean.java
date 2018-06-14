@@ -2,7 +2,6 @@ package com.canavesi.recipes.site.web;
 
 import com.canavesi.recipes.site.dao.DaoConfigs;
 import com.canavesi.recipes.site.dao.DaoRecipes;
-import com.canavesi.recipes.site.dao.DaoRecipes3;
 import com.canavesi.recipes.site.entities.RecipeEntity;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,25 +83,6 @@ public class IndexManagedBean {
             featuredRecipes.add(recipes.get(i));
 
         }
-    }
-
-    public void install() {
-        List<RecipeEntity> recipesToSave = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            RecipeEntity recipeEntity = new RecipeEntity();
-            recipeEntity.setTitle("Recipe title " + i);
-            recipeEntity.setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ");
-            recipeEntity.setIngredients("ing1, ing2, ing3, ing4,ing5,ing6,ing7,ing8,ing9,ing10 ");
-            recipeEntity.setSteps("step1, step2, step3step4,step5,step6,step7,step8,step9,step10");
-            recipeEntity.setFeaturedFullImageUrl("http://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/01/pizzapepperonni.jpg");
-            recipeEntity.setTitleForUrl("recipe-title-" + i);
-            recipeEntity.setActive(true);
-            recipesToSave.add(recipeEntity);
-        }
-        DaoRecipes3 daoRecipes = new DaoRecipes3();
-        daoRecipes.save(recipesToSave);
-
     }
 
     public void loadIndex() throws Exception {
