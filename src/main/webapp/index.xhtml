@@ -59,9 +59,18 @@
 
         <!-- Main Content -->
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="row mx-auto">
 
+                <div class="col">
+                    <div class="only-desktop">
+                        <div class="position-fixed" >
+                            <ui:include src="./WEB-INF/banner-fixed-left.xhtml"/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8 col-md-10 ">
                     <p:repeat step="1"  var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus" offset="0" size="10" >
 
                         <div class="post-preview">
@@ -113,6 +122,17 @@
                     </div>
                     -->
                 </div>
+
+                <div class="col">
+                    <div class="only-desktop">
+                        <div class="position-fixed"  >
+                            <ui:include src="./WEB-INF/banner-fixed-right.xhtml"/>
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
 
