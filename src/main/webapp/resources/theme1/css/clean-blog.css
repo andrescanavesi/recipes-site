@@ -470,3 +470,12 @@ footer .copyright {
 .header-generic{
     background-image: url('https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_1300,q_auto,f_auto/kichen-big.jpg') !important;
 }
+
+
+
+
+@media only screen and (max-width: 1100px) {
+    .only-desktop {
+        visibility: hidden;
+    }
+}

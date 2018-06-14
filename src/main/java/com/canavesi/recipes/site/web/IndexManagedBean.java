@@ -31,6 +31,8 @@ public class IndexManagedBean {
     private Boolean showAdFooter;
     private Boolean showAdIngredients;
     private Boolean showAdSteps;
+    private Boolean showAdFixedLeft;
+    private Boolean showAdFixedRight;
     private String baseUrl;
     private Boolean cleanCache = false;
     private String homeTitle;
@@ -48,6 +50,8 @@ public class IndexManagedBean {
         showAdFooter = DaoConfigs.getShowAdFooter();
         showAdIngredients = DaoConfigs.getShowAdIngredients();
         showAdSteps = DaoConfigs.getShowAdSteps();
+        showAdFixedLeft = DaoConfigs.getShowAdFixedLeft();
+        showAdFixedRight = DaoConfigs.getShowAdFixedRight();
         baseUrl = DaoConfigs.getBaseUrl();
 
         try {
@@ -194,6 +198,14 @@ public class IndexManagedBean {
 
     public void setShowAdSteps(Boolean showAdSteps) {
         this.showAdSteps = showAdSteps;
+    }
+
+    public Boolean getShowAdFixedLeft() {
+        return showAdFixedLeft;
+    }
+
+    public Boolean getShowAdFixedRight() {
+        return showAdFixedRight;
     }
 
 }

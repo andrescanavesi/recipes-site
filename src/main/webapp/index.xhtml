@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
 
-                    <ui:repeat var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus">
+                    <p:repeat step="1"  var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus" offset="0" size="10" >
 
                         <div class="post-preview">
                             <a href="receta/#{data.id}/#{data.titleForUrl}?utm_source=index_title&amp;utm_medium=web">
@@ -104,7 +104,7 @@
                             <p class="post-meta">Creada el dia #{data.createdAtFormatted}</p>
                         </div>
                         <hr/>
-                    </ui:repeat>
+                    </p:repeat>
 
                     <!-- Pager -->
                     <!--

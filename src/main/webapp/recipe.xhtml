@@ -66,60 +66,53 @@
         <!-- Recipe Content -->
         <article>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-                        <div class="post-heading">
-                            <h1> #{indexManagedBean.recipeToDisplay.title}</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-1">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-                        <img src="#{indexManagedBean.recipeToDisplay.featuredFullImageUrl}" class="img-thumbnail rounded" alt="Imagen receta"/>
-                        <p class="lead">#{indexManagedBean.recipeToDisplay.description}</p>
-
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-                        <div class="row">
-                            <div class="col">
-                                <h4>Ingredientes</h4>
-                                <ul>
-                                    <ui:repeat var="ingredient" value="#{indexManagedBean.recipeToDisplay.ingredientsArray}"  varStatus="dataStatus">
-                                        <li>#{ingredient} </li>
-                                    </ui:repeat>
-                                </ul>
+                <div class="row mx-auto">
+                    <div class="col">
+                        <div class="only-desktop">
+                            <div class="position-fixed" >
+                                <ui:include src="./WEB-INF/banner-fixed-left.xhtml"/>
                             </div>
+                        </div>
 
+                    </div>
+                    <div class="col-lg-8 col-md-10 ">
+                        <div class="row justify-content-md-center ">
+                            <div class="post-heading ">
+                                <h1> #{indexManagedBean.recipeToDisplay.title}</h1>
+                            </div>
+                            <img src="#{indexManagedBean.recipeToDisplay.featuredFullImageUrl}" class="img-fluid rounded" alt="Imagen receta"/>
+                            <p class="lead text-muted">#{indexManagedBean.recipeToDisplay.description}</p>
                         </div>
 
                         <div class="row">
-                            <div class="col">
-                                <h4>Pasos</h4>
-                                <ul>
-                                    <ui:repeat var="step" value="#{indexManagedBean.recipeToDisplay.stepsArray}"  varStatus="dataStatus">
-                                        <li>#{step} </li>
-                                    </ui:repeat>
-                                </ul>
-                                <ui:include src="./WEB-INF/banner-steps.xhtml"/>
-                            </div>
-
+                            <h4 class="w-100">Ingredientes</h4>
+                            <ul>
+                                <ui:repeat var="ingredient" value="#{indexManagedBean.recipeToDisplay.ingredientsArray}"  varStatus="dataStatus">
+                                    <li>#{ingredient} </li>
+                                </ui:repeat>
+                            </ul>
                         </div>
 
+                        <div class="row">
+                            <h4 class="w-100">Pasos</h4>
+                            <ol>
+                                <ui:repeat var="step" value="#{indexManagedBean.recipeToDisplay.stepsArray}"  varStatus="dataStatus">
+                                    <li>#{step} </li>
+                                </ui:repeat>
+                            </ol>
+                            <ui:include src="./WEB-INF/banner-steps.xhtml"/>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="only-desktop">
+                            <div class="position-fixed"  >
+                                <ui:include src="./WEB-INF/banner-fixed-right.xhtml"/>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <a class="btn"  href="https://www.facebook.com/sharer/sharer.php?u=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}"
@@ -171,7 +164,7 @@
             </div>
         </article>
         <hr/>
-        <ui:include  src="./WEB-INF/featured-recipes.xhtml"/>
+        <ui:include src="./WEB-INF/featured-recipes.xhtml"/>
     </ui:define>
 </ui:composition>
 

@@ -105,4 +105,20 @@ public class DaoConfigs {
         return Boolean.valueOf(value);
     }
 
+    public static boolean getShowAdFixedLeft() {
+        String value = System.getenv("SHOW_AD_FIXED_LEFT");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
+    public static boolean getShowAdFixedRight() {
+        String value = System.getenv("SHOW_AD_FIXED_RIGHT");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
 }
