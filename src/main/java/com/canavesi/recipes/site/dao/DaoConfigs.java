@@ -1,6 +1,5 @@
 package com.canavesi.recipes.site.dao;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -65,6 +64,22 @@ public class DaoConfigs {
 
     public static boolean getShowAdFooter() {
         String value = System.getenv("SHOW_AD_FOOTER");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
+    public static boolean getShowAdIngredients() {
+        String value = System.getenv("SHOW_AD_INGREDIENTS");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
+    public static boolean getShowAdSteps() {
+        String value = System.getenv("SHOW_AD_STEPS");
         if (value == null) {
             return false;
         }

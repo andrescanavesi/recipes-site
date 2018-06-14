@@ -30,6 +30,8 @@ public class IndexManagedBean {
     private Long recipeId;
     private Boolean isProduction;
     private Boolean showAdFooter;
+    private Boolean showAdIngredients;
+    private Boolean showAdSteps;
     private String baseUrl;
     private Boolean cleanCache = false;
     private String homeTitle;
@@ -45,6 +47,8 @@ public class IndexManagedBean {
         LOG.info("Init");
         isProduction = DaoConfigs.isProduction();
         showAdFooter = DaoConfigs.getShowAdFooter();
+        showAdIngredients = DaoConfigs.getShowAdIngredients();
+        showAdSteps = DaoConfigs.getShowAdSteps();
         baseUrl = DaoConfigs.getBaseUrl();
 
         try {
@@ -194,6 +198,22 @@ public class IndexManagedBean {
 
     public String getHomeUpdatedAtFormatted() {
         return homeUpdatedAtFormatted;
+    }
+
+    public Boolean getShowAdIngredients() {
+        return showAdIngredients;
+    }
+
+    public void setShowAdIngredients(Boolean showAdIngredients) {
+        this.showAdIngredients = showAdIngredients;
+    }
+
+    public Boolean getShowAdSteps() {
+        return showAdSteps;
+    }
+
+    public void setShowAdSteps(Boolean showAdSteps) {
+        this.showAdSteps = showAdSteps;
     }
 
 }

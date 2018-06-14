@@ -33,4 +33,6 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/error.xhtml</location>
     </error-page>
+
+   
 </web-app>

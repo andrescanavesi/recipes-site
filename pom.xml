@@ -16,6 +16,7 @@
 
     <dependencies>
 
+
         <!-- To override urls, instead of recipe.xhtml?id=1234 to have /recipe/1234 for JSF 2.x. -->
         <dependency>
             <groupId>org.ocpsoft.rewrite</groupId>
@@ -54,7 +55,7 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>6.1</version>
+            <version>6.2</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
