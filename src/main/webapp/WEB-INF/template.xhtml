@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
 
@@ -14,10 +15,8 @@
         </ui:insert>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-
-        <!-- Required meta tags -->
         <meta charset="utf-8"/>
+        <!-- 180 days of cache -->
         <meta http-equiv="Cache-control" content="public, max-age=15552000"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta name="author" content="recetas-city.com"/>
@@ -42,46 +41,23 @@
             <meta property="og:image" content="https://res.cloudinary.com/dniiru5xy/image/upload/v1528565414/recipe-default.png" />
         </ui:insert>
 
-        <!-- Bootstrap core CSS -->
-        <link href="#{indexManagedBean.baseUrl}resources/theme1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
-        <!-- Custom fonts for this template -->
-        <link href="#{indexManagedBean.baseUrl}resources/theme1/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'/>
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
 
-        <!-- Custom styles for this template -->
         <link href="#{indexManagedBean.baseUrl}resources/theme1/css/clean-blog.css" rel="stylesheet" />
-        <!-- Social button https://lipis.github.io/bootstrap-social/ -->
-        <link href="#{indexManagedBean.baseUrl}resources/theme1/css/bootstrap-social.css" rel="stylesheet" />
-
-        <link rel="shortcut icon" type="image/png" href="#{indexManagedBean.baseUrl}resources/theme1/img/favicon.png"/>
+        <link rel="icon" href="https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_24,q_auto,f_auto/favicon.ico"/>
 
 
     </h:head>
 
     <h:body>
 
+
         <ui:include src="menu.xhtml"/>
-
-
-
         <ui:insert name="content">
             Default content
         </ui:insert>
-
-
         <ui:include src="footer.xhtml"/>
         <ui:include src="banner-footer.xhtml"/>
-
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="#{indexManagedBean.baseUrl}resources/theme1/vendor/jquery/jquery.min.js"></script>
-        <script src="#{indexManagedBean.baseUrl}resources/theme1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Custom scripts for this template -->
-        <script src="#{indexManagedBean.baseUrl}resources/theme1/js/clean-blog.min.js"></script>
-
     </h:body>
-
 </html>
