@@ -56,8 +56,8 @@ public class IndexManagedBean {
     }
 
     private void loadRecipes() throws Exception {
-        DaoRecipes daoRecipes = new DaoRecipes();
-        recipes = daoRecipes.findAll(0, 100);
+
+        recipes = DaoRecipes.getInstance().findAll(0, 100);
 
         loadFeaturedRecipes();
 
@@ -103,6 +103,7 @@ public class IndexManagedBean {
 
     public void loadIndex() throws Exception {
         if (cleanCache != null && cleanCache) {
+            DaoRecipes.getInstance().resetCache();
             loadRecipes();
             cleanCache = false;
         }

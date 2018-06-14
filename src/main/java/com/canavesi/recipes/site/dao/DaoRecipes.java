@@ -22,10 +22,20 @@ public class DaoRecipes {
 
     private static final Logger LOG = Logger.getLogger(DaoRecipes.class.getName());
 
+    private static DaoRecipes instance;
+    private List<RecipeEntity> recipesCache;
+
     /**
      *
      */
-    public DaoRecipes() {
+    private DaoRecipes() {
+    }
+
+    public static DaoRecipes getInstance() {
+        if (instance == null) {
+            instance = new DaoRecipes();
+        }
+        return instance;
     }
 
     private RecipeEntity convertToRecipeEntity(ResultSet resultSet) throws SQLException, ParseException {
@@ -57,7 +67,11 @@ public class DaoRecipes {
     }
 
     public List<RecipeEntity> findAll(int start, int end) throws Exception {
-        LOG.fine("Finding the next analysis pending to process...");
+
+        if (this.recipesCache != null) {
+            return this.recipesCache;
+        }
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -74,12 +88,18 @@ public class DaoRecipes {
                 recipes.add(recipeEntity);
             }
             preparedStatement.close();
+            this.recipesCache = recipes;
+
             return recipes;
         } catch (Exception e) {
             throw e;
         } finally {
             DbHelper.tryToCloseResources(resultSet, preparedStatement, connection);
         }
+    }
+
+    public void resetCache() {
+        this.recipesCache = null;
     }
 
 }
