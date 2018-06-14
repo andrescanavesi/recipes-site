@@ -97,4 +97,12 @@ public class DaoConfigs {
         return value;
     }
 
+    public static boolean getEnableCompression() {
+        String value = System.getenv("ENABLE_COMPRESSION");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
 }
