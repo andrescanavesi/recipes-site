@@ -3,34 +3,31 @@
       xmlns:p="http://primefaces.org/ui">
 
     <!-- Featured recipes loads once they are visible -->
-    <p:outputPanel deferred="true" deferredMode="visible" global="false">
-
-        <div class="container">
-            <div class="row">
-                <div class="mt-3 w-100 bg-success">
-                    <h3 class="text-center text-light">Recetas destacadas</h3>
-                </div>
-                <div class="w-100" />
-                <ui:repeat var="data" value="#{indexManagedBean.featuredRecipes}" varStatus="status" >
-                    <div class="col-sm">
-                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=featured_recipes&amp;utm_medium=web">
-                            <p class="h4">
-                                #{data.title}
-                            </p>
-                            <img src="#{data.featuredThumbnailImageUrl}" class="img-thumbnail rounded" alt="Imagen receta"/>
-
-                        </a>
-                        <div class="summary w-100">
-                            #{data.descriptionMeta}...
-                            <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=featured_recipes_continue_reading&amp;utm_medium=web">
-                                seguir leyendo
-                            </a>
-                        </div>
-                    </div>
-                    <p:outputPanel rendered="#{status.index eq 2}" styleClass="w-100 border-top mt-3 mb-3" />
-                </ui:repeat>
+    <div class="container">
+        <div class="row">
+            <div class="mt-3 w-100 bg-success">
+                <h3 class="text-center text-light">Más recetas</h3>
             </div>
+            <div class="w-100" />
+            <ui:repeat var="data" value="#{indexManagedBean.featuredRecipes}" varStatus="status" >
+                <div class="col-sm">
+                    <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=featured_recipes&amp;utm_medium=web">
+                        <p class="h4">
+                            #{data.title}
+                        </p>
+                        <img src="#{data.featuredThumbnailImageUrl}" class="img-thumbnail rounded" alt="Imagen receta"/>
+
+                    </a>
+                    <div class="summary w-100">
+                        #{data.descriptionMeta}...
+                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=featured_recipes_continue_reading&amp;utm_medium=web">
+                            seguir leyendo
+                        </a>
+                    </div>
+                </div>
+                <p:outputPanel rendered="#{status.index eq 2}" styleClass="w-100 border-top mt-3 mb-3" />
+            </ui:repeat>
         </div>
-    </p:outputPanel>
+    </div>
 
 </html>
