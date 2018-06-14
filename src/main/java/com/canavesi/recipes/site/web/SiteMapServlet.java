@@ -51,7 +51,7 @@ public class SiteMapServlet extends HttpServlet {
             out.println("<url> ");
             out.println("<loc>" + baseUrl + "</loc> ");
             out.println("<image:image>");
-            out.println("<image:loc>https://res.cloudinary.com/dniiru5xy/image/upload/v1528565414/recipe-default.png</image:loc>");
+            out.println("<image:loc>https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/recipe-default.png</image:loc>");
             out.println("<image:caption>Recetas City. Las mejores recetas de cocina</image:caption>");
             out.println("</image:image>");
             out.println("</url> ");
