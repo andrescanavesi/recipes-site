@@ -69,8 +69,10 @@ public class DaoRecipes {
     public List<RecipeEntity> findAll(int start, int end) throws Exception {
 
         if (this.recipesCache != null) {
+            LOG.info("Returning recipes from cache");
             return this.recipesCache;
         }
+        LOG.info("Getting recipes from DB");
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
