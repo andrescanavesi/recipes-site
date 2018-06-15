@@ -3,30 +3,33 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 
+
     <div class="bg-light p-2 mt-3 all-recipes-list">
-        <div class="row mx-auto">
-            <div class="col-sm-2">
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-sm-2">
 
-            </div>
-            <div class="col-lg-8 col-md-10 ">
-
-                <div class="row">
-                    <ui:repeat var="data" value="#{indexManagedBean.recipes}" varStatus="status" >
-                        <div class="col-3 mt-2">
-                            <a class="my-link" href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=all_recipes&amp;utm_medium=web">
-                                #{data.title}
-
-                            </a>
-                        </div>
-
-
-                    </ui:repeat>
                 </div>
-            </div>
-            <div class="col-sm-2">
+                <div class="col-lg-8 col-md-8 ">
+
+                    <div class="row">
+                        <ui:repeat var="data" value="#{indexManagedBean.recipes}" varStatus="status" >
+                            <div class="col-sm-4 mt-2">
+                                <a class="my-link" href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=all_recipes&amp;utm_medium=web">
+                                    #{data.title}
+
+                                </a>
+                            </div>
+
+
+                        </ui:repeat>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+
+                </div>
 
             </div>
-
         </div>
     </div>
 

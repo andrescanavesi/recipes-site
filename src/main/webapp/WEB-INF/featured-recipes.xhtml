@@ -24,12 +24,7 @@
                                 <img data-src="#{data.featuredThumbnailImageUrl}" class="img-thumbnail rounded" alt="Imagen receta"/>
 
                             </a>
-                            <div class="summary w-100">
-                                #{data.descriptionMeta}...
-                                <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=featured_recipes_continue_reading&amp;utm_medium=web">
-                                    seguir leyendo
-                                </a>
-                            </div>
+
                         </div>
 
                         <h:panelGrid columns="1" rendered="#{status.index eq 2}" styleClass="w-100 border-top mt-3 mb-3">
