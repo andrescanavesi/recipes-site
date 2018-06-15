@@ -394,8 +394,12 @@ form .form-group:first-child .floating-label-form-group {
     border-top: 1px solid #dee2e6;
 }
 
+.all-recipes-list{
+    background-color: #edebf0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23a9a8ab' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
 footer {
-    margin-top: 20px;
     padding: 30px 0px 100px 0px;
     background-color: #3f3f3f;
 }
@@ -471,7 +475,10 @@ footer .copyright {
     background-image: url('https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_1300,q_auto,f_auto/kichen-big.jpg') !important;
 }
 
-
+.my-link{
+    color: #007bff;
+    text-decoration: none;
+}
 
 
 @media only screen and (max-width: 1100px) {
