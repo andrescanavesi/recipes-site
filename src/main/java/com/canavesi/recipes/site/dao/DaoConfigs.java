@@ -121,4 +121,11 @@ public class DaoConfigs {
         return Boolean.valueOf(value);
     }
 
+    public static boolean getShowAdUnderRecipeTitle() {
+        String value = System.getenv("SHOW_AD_UNDER_RECIPE_TITLE");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
 }
