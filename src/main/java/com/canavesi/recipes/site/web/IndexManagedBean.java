@@ -210,4 +210,12 @@ public class IndexManagedBean {
         return showAdFixedRight;
     }
 
+    public Boolean getShowAdUnderRecipeTitle() {
+        return showAdUnderRecipeTitle;
+    }
+
+    public void setShowAdUnderRecipeTitle(Boolean showAdUnderRecipeTitle) {
+        this.showAdUnderRecipeTitle = showAdUnderRecipeTitle;
+    }
+
 }
