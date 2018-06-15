@@ -6,7 +6,7 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
 
-    <p:outputPanel rendered="#{indexManagedBean.isProduction}">
+    <h:panelGrid columns="1" rendered="#{indexManagedBean.isProduction}">
 
         <!-- Must be included between <head> </head> tags  -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -22,6 +22,6 @@
         </script>
 
 
-    </p:outputPanel>
+    </h:panelGrid>
 
 </ui:composition>

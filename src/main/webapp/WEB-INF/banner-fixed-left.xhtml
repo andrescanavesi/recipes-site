@@ -1,7 +1,7 @@
 <html xmlns = "http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <p:outputPanel rendered="#{indexManagedBean.isProduction and indexManagedBean.showAdFixedLeft}">
+    <h:panelGrid columns="1" rendered="#{indexManagedBean.isProduction and indexManagedBean.showAdFixedLeft}" >
 
         <!-- Banner Fixed Left -->
         <script async="true" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -14,7 +14,7 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
 
-    </p:outputPanel>
+    </h:panelGrid>
 
 
 

@@ -1,6 +1,6 @@
 <html xmlns = "http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <!-- Featured recipes loads once they are visible -->
     <div class="container">
@@ -31,7 +31,9 @@
                                 </a>
                             </div>
                         </div>
-                        <p:outputPanel rendered="#{status.index eq 2}" styleClass="w-100 border-top mt-3 mb-3" />
+
+                        <h:panelGrid columns="1" rendered="#{status.index eq 2}" styleClass="w-100 border-top mt-3 mb-3">
+                        </h:panelGrid>
                     </ui:repeat>
                 </div>
             </div>

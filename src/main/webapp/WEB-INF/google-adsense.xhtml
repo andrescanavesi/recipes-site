@@ -1,12 +1,10 @@
 <ui:composition
-
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <p:outputPanel rendered="#{indexManagedBean.isProduction}">
+    <h:panelGrid columns="1" rendered="#{indexManagedBean.isProduction}">
 
         <!-- Must be included between <head> </head> tags  -->
         <!-- It will display adds automatically in the page -->
@@ -17,6 +15,6 @@
                 enable_page_level_ads: true
             });
         </script>
-    </p:outputPanel>
+    </h:panelGrid>
 
 </ui:composition>
