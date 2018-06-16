@@ -34,7 +34,7 @@ public class SiteMapServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/xml;charset=UTF-8");
 
-        List<RecipeEntity> recipes = DaoRecipes.getInstance().findAll(0, 1000);
+        List<RecipeEntity> recipes = DaoRecipes.getInstance().find(0, 1000);
         String baseUrl = DaoConfigs.getBaseUrl();
 
         /**

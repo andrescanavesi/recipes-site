@@ -38,15 +38,6 @@
     </ui:define>
 
     <ui:define name="content">
-
-        <h:form id="form">
-
-            <f:metadata>
-                <f:viewParam name="id" value="#{indexManagedBean.recipeId}" />
-                <f:viewAction action="#{indexManagedBean.loadRecipe}" />
-            </f:metadata>
-        </h:form>
-
         <!-- Page Header -->
         <header class="masthead header-background">
             <div class="overlay"></div>
@@ -76,7 +67,7 @@
                     </div>
                     <div class="col-lg-8 col-md-10 ">
                         <div class="row justify-content-md-center ">
-                            <div class="post-heading ">
+                            <div class="post-heading mt-3">
                                 <h1> #{indexManagedBean.recipeToDisplay.title}</h1>
                             </div>
                             <ui:include src="./WEB-INF/banner-under-recipe-title.xhtml"/>

@@ -1,6 +1,8 @@
 package com.canavesi.recipes.site.dao;
 
 import com.canavesi.recipes.site.entities.RecipeEntity;
+import com.canavesi.recipes.site.exceptions.DatabaseConfigurationException;
+import com.canavesi.recipes.site.exceptions.RecipeNotFoundException;
 import com.canavesi.recipes.site.util.DbHelper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,11 +64,23 @@ public class DaoRecipes {
         String imagesBaseUrl = DaoConfigs.getImagesBaseUrl();
         recipe.setFeaturedFullImageUrl(imagesBaseUrl + "c_fill,g_auto/w_600,q_auto,f_auto/" + imageName);
         recipe.setFeaturedThumbnailImageUrl(imagesBaseUrl + "c_fill,g_auto/w_300,q_auto,f_auto/" + imageName);
+        recipe.setAptoCeliacos(resultSet.getBoolean("aptoceliacos"));
 
         return recipe;
     }
 
-    public List<RecipeEntity> findAll(int start, int end) throws Exception {
+    public List<RecipeEntity> findOnlyCeliacs(int start, int end) throws Exception {
+        List<RecipeEntity> allRecipes = find(start, end);
+        List<RecipeEntity> onlyCeliacs = new ArrayList<>();
+        for (RecipeEntity recipe : allRecipes) {
+            if (recipe.getAptoCeliacos()) {
+                onlyCeliacs.add(recipe);
+            }
+        }
+        return onlyCeliacs;
+    }
+
+    public List<RecipeEntity> find(int start, int end) throws Exception {
 
         if (this.recipesCache != null) {
             LOG.info("Returning recipes from cache");
@@ -79,9 +93,13 @@ public class DaoRecipes {
         ResultSet resultSet = null;
         try {
             connection = DbHelper.getInstance().getConnection();
-            //TODO implement pagination
-            preparedStatement = connection.prepareStatement("SELECT * FROM recipes WHERE active=TRUE ORDER BY createdAt DESC LIMIT 1000");
-            LOG.log(Level.FINE, "\n{0}", preparedStatement.toString());
+
+            preparedStatement = connection.prepareStatement("SELECT * FROM recipes WHERE active=? ORDER BY createdAt DESC");
+            LOG.log(Level.INFO, "\n{0}", preparedStatement.toString());
+            preparedStatement.setBoolean(1, true);
+
+            preparedStatement.setMaxRows(DaoConfigs.getPageSizeDB());
+            preparedStatement.setFetchSize(DaoConfigs.getPageSizeDB());
             resultSet = preparedStatement.executeQuery();
 
             List<RecipeEntity> recipes = new ArrayList<>();
@@ -93,7 +111,7 @@ public class DaoRecipes {
             this.recipesCache = recipes;
 
             return recipes;
-        } catch (Exception e) {
+        } catch (DatabaseConfigurationException | SQLException | ParseException e) {
             throw e;
         } finally {
             DbHelper.tryToCloseResources(resultSet, preparedStatement, connection);
@@ -102,6 +120,43 @@ public class DaoRecipes {
 
     public void resetCache() {
         this.recipesCache = null;
+    }
+
+    public RecipeEntity find(Long id) throws Exception {
+        this.find(0, DaoConfigs.getPageSizeDB());
+        for (RecipeEntity recipe : this.recipesCache) {
+            if (recipe.getId().equals(id)) {
+                return recipe;
+            }
+        }
+        throw new RecipeNotFoundException();
+//        LOG.info("Getting recipe from DB");
+//
+//        Connection connection = null;
+//        PreparedStatement preparedStatement = null;
+//        ResultSet resultSet = null;
+//        try {
+//            connection = DbHelper.getInstance().getConnection();
+//
+//            preparedStatement = connection.prepareStatement("SELECT * FROM recipes WHERE active=? AND id = ?");
+//            LOG.log(Level.FINE, "\n{0}", preparedStatement.toString());
+//            preparedStatement.setBoolean(1, true);
+//            preparedStatement.setLong(2, id);
+//            preparedStatement.setMaxRows(1);
+//
+//            resultSet = preparedStatement.executeQuery();
+//            RecipeEntity recipeEntity = null;
+//            if (resultSet.next()) {
+//                recipeEntity = convertToRecipeEntity(resultSet);
+//            } else {
+//                throw new RecipeNotFoundException();
+//            }
+//            return recipeEntity;
+//        } catch (DatabaseConfigurationException | RecipeNotFoundException | SQLException | ParseException e) {
+//            throw e;
+//        } finally {
+//            DbHelper.tryToCloseResources(resultSet, preparedStatement, connection);
+//        }
     }
 
 }

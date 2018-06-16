@@ -3,14 +3,17 @@ package com.canavesi.recipes.site.web;
 import com.canavesi.recipes.site.dao.DaoConfigs;
 import com.canavesi.recipes.site.dao.DaoRecipes;
 import com.canavesi.recipes.site.entities.RecipeEntity;
+import com.canavesi.recipes.site.exceptions.RecipeNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  * index.xhtml controller
@@ -18,7 +21,7 @@ import javax.faces.bean.SessionScoped;
  * @author Andres Canavesi
  */
 @Named(value = "indexManagedBean")
-@SessionScoped
+@ViewScoped
 @ManagedBean
 public class IndexManagedBean {
 
@@ -26,7 +29,6 @@ public class IndexManagedBean {
     private List<RecipeEntity> recipes;
     private List<RecipeEntity> featuredRecipes;
     private RecipeEntity recipeToDisplay;
-    private Long recipeId;
     private Boolean isProduction;
     private Boolean showAdFooter;
     private Boolean showAdIngredients;
@@ -40,6 +42,8 @@ public class IndexManagedBean {
     private String homeDescription;
     private String homeUrlImage;
     private String homeUpdatedAtFormatted;
+    private Boolean onlyCeliacsRecipes = false;
+    private String styleToHideHeaderCeliacos = "d-none";
 
     /**
      *
@@ -56,17 +60,47 @@ public class IndexManagedBean {
         showAdUnderRecipeTitle = DaoConfigs.getShowAdUnderRecipeTitle();
         baseUrl = DaoConfigs.getBaseUrl();
 
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+
+        String recipeId = params.get("id");
+        if (recipeId != null) {
+            Long id = Long.valueOf(recipeId);
+            try {
+                recipeToDisplay = DaoRecipes.getInstance().find(id);
+            } catch (RecipeNotFoundException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        String cleanCacheString = params.get("cleanCache");
+        if (cleanCacheString != null) {
+            DaoRecipes.getInstance().resetCache();
+        }
+
+        String onlyCeliacsRecipesString = params.get("onlyCeliacsRecipes");
+        if (onlyCeliacsRecipesString != null) {
+            onlyCeliacsRecipes = Boolean.valueOf(onlyCeliacsRecipesString);
+            //empty to show
+            styleToHideHeaderCeliacos = "";
+        }
+
         try {
             loadRecipes();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private void loadRecipes() throws Exception {
-
-        recipes = DaoRecipes.getInstance().findAll(0, 100);
+        if (onlyCeliacsRecipes) {
+            recipes = DaoRecipes.getInstance().findOnlyCeliacs(0, DaoConfigs.getPageSizeDB());
+        } else {
+            recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());
+        }
 
         loadFeaturedRecipes();
 
@@ -86,31 +120,10 @@ public class IndexManagedBean {
         Collections.shuffle(recipesCopy);
         featuredRecipes = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            featuredRecipes.add(recipes.get(i));
-
-        }
-    }
-
-    public void loadIndex() throws Exception {
-        if (cleanCache != null && cleanCache) {
-            DaoRecipes.getInstance().resetCache();
-            loadRecipes();
-            cleanCache = false;
-        }
-    }
-
-    public void loadRecipe() {
-        LOG.info("Getting recipe");
-
-        if (recipeId == null) {
-            throw new IllegalArgumentException("Missing recipeId");
-        }
-
-        for (RecipeEntity recipe : recipes) {
-            if (recipe.getId().equals(recipeId)) {
-                recipeToDisplay = recipe;
-                break;
+            if (i < recipes.size()) {
+                featuredRecipes.add(recipes.get(i));
             }
+
         }
     }
 
@@ -120,14 +133,6 @@ public class IndexManagedBean {
 
     public RecipeEntity getRecipeToDisplay() {
         return recipeToDisplay;
-    }
-
-    public Long getRecipeId() {
-        return recipeId;
-    }
-
-    public void setRecipeId(Long recipeId) {
-        this.recipeId = recipeId;
     }
 
     public Boolean getIsProduction() {
@@ -216,6 +221,18 @@ public class IndexManagedBean {
 
     public void setShowAdUnderRecipeTitle(Boolean showAdUnderRecipeTitle) {
         this.showAdUnderRecipeTitle = showAdUnderRecipeTitle;
+    }
+
+    public Boolean getOnlyCeliacsRecipes() {
+        return onlyCeliacsRecipes;
+    }
+
+    public void setOnlyCeliacsRecipes(Boolean onlyCeliacsRecipes) {
+        this.onlyCeliacsRecipes = onlyCeliacsRecipes;
+    }
+
+    public String getStyleToHideHeaderCeliacos() {
+        return styleToHideHeaderCeliacos;
     }
 
 }

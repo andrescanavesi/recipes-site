@@ -21,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 800;
+    font-weight: 200;
 }
 
 a {
@@ -196,7 +196,7 @@ img::-moz-selection {
 }
 
 header.masthead {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     background: no-repeat center center;
     background-color: #FF0000;
     background-attachment: scroll;
@@ -333,7 +333,7 @@ header.masthead .post-heading .meta a {
 
 @media only screen and (min-width: 768px) {
     .post-preview > a > .post-title {
-        font-size: 36px;
+        font-size: 30px;
     }
 }
 
@@ -399,7 +399,8 @@ form .form-group:first-child .floating-label-form-group {
 
 .all-recipes-list{
     background-color: #edebf0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23a9a8ab' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    background-image: url(../img/food-pattern.png);
+    /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23a9a8ab' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");*/
 }
 
 footer {
@@ -483,4 +484,12 @@ footer .copyright {
     .only-mobile {
         display: none;
     }
+}
+
+.header-celiacos{
+    background-color: #fafafa;
+    min-height: 90px;
+    padding-top: 20px;
+    font-weight: 800;
+    background-image: url(../img/cream-pixels.png);
 }

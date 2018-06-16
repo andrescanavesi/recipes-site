@@ -9,8 +9,6 @@ import javax.persistence.Table;
  *
  * @author Andres Canavesi
  */
-@Entity
-@Table(name = RecipeEntity.TABLE_NAME)
 public class RecipeEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,21 +16,19 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     private String title;
     private String titleForUrl;
-    @Column(length = 1000)
     private String description;
     /**
      * comma separated
      */
-    @Column(length = 1000)
     private String ingredients;
     /**
      * comma separated
      */
-    @Column(length = 2000)
     private String steps;
     private String featuredImageName;
     private String featuredFullImageUrl;
     private String featuredThumbnailImageUrl;
+    private Boolean aptoCeliacos;
 
     public String getTitle() {
         return title;
@@ -123,6 +119,14 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     public void setFeaturedImageName(String featuredImageName) {
         this.featuredImageName = featuredImageName;
+    }
+
+    public Boolean getAptoCeliacos() {
+        return aptoCeliacos;
+    }
+
+    public void setAptoCeliacos(Boolean aptoCeliacos) {
+        this.aptoCeliacos = aptoCeliacos;
     }
 
 }

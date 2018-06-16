@@ -128,4 +128,12 @@ public class DaoConfigs {
         }
         return Boolean.valueOf(value);
     }
+
+    public static int getPageSizeDB() {
+        String value = System.getenv("PAGE_SIZE_DB");
+        if (value == null) {
+            return 100;
+        }
+        return Integer.valueOf(value);
+    }
 }

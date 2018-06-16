@@ -91,6 +91,7 @@ public class DbHelper {
      * @param connection
      */
     public static void tryToCloseResources(ResultSet resultSet, PreparedStatement statement, Connection connection) {
+        LOG.info("Closing DB resources...");
         try {
             if (resultSet != null) {
                 resultSet.close();

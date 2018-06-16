@@ -35,14 +35,8 @@
 
     <ui:define name="content">
 
-        <f:metadata>
-            <!-- boolean -->
-            <f:viewParam name="cleanCache" value="#{indexManagedBean.cleanCache}" />
-            <f:viewAction action="#{indexManagedBean.loadIndex}" />
-        </f:metadata>
-
         <!-- Page Header -->
-        <header class="masthead header-background">
+        <header class="masthead header-background #{indexManagedBean.styleToHideHeaderCeliacos}}">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
@@ -55,6 +49,17 @@
                 </div>
             </div>
         </header>
+
+        <div class="header-celiacos d-none">
+            <div class="container">
+                <div class="row mx-auto">
+                    <div class="col-lg-8 col-md-10 mx-auto text-center">
+                        <h:outputText class="h1"  value="Recetas para celiacos"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         <!-- Main Content -->
         <div class="container">
@@ -70,10 +75,12 @@
                 </div>
 
                 <div class="col-lg-8 col-md-10 ">
-                    <ui:repeat  var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus" size="10" >
+
+
+                    <ui:repeat  var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus"  >
 
                         <div class="post-preview">
-                            <a href="receta/#{data.id}/#{data.titleForUrl}?utm_source=index_title&amp;utm_medium=web">
+                            <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=index_title&amp;utm_medium=web">
                                 <h2 class="post-title">
                                     #{data.title}
                                 </h2>
@@ -100,7 +107,7 @@
                                     </ul>
 
                                     <div class="mb-3 w-100">
-                                        <a href="receta/#{data.id}/#{data.titleForUrl}?utm_source=continue_reading_ingredients&amp;utm_medium=web"
+                                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=continue_reading_ingredients&amp;utm_medium=web"
                                            >
                                             Seguir leyendo
                                         </a>

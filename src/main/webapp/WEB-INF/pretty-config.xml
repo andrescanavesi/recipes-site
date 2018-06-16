@@ -23,6 +23,9 @@
         <view-id value="/index.xhtml?cleanCache=true" />
     </url-mapping>
 
-
+    <url-mapping id="celiacos">
+        <pattern value="/recetas/celiacos" />
+        <view-id value="/index.xhtml?onlyCeliacsRecipes=true" />
+    </url-mapping>
 
 </pretty-config>
