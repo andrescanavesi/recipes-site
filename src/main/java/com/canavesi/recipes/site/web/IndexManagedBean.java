@@ -107,6 +107,9 @@ public class IndexManagedBean {
         RecipeEntity firstRecipe = recipes.get(0);
         homeTitle = firstRecipe.getTitle();
         homeDescription = firstRecipe.getDescriptionMeta();
+        if (onlyCeliacsRecipes) {
+            homeDescription += ". Recetas para celiacos";
+        }
         homeUrlImage = firstRecipe.getFeaturedThumbnailImageUrl();
         homeUpdatedAtFormatted = firstRecipe.getUpdatedAtFormatted();
 

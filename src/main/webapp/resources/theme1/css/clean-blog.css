@@ -259,6 +259,10 @@ header.masthead .site-heading .subheading {
     }
 }
 
+.site-heading a{
+    color: #ffffff;
+}
+
 header.masthead .post-heading h1 {
     font-size: 35px;
 }
@@ -463,8 +467,22 @@ footer .copyright {
     border-color: rgba(0,0,0,0.2);
 }
 
-.header-background{
-    background-image: url('https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_1300,q_auto,f_auto/pizza-background.jpg')!important;
+@media only screen and (min-width: 1100px) {
+    .header-background{
+        background-image: url('https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_1100,q_auto,f_auto/pizza-background.jpg')!important;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .header-background{
+        background-image: url('https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_700,q_auto,f_auto/pizza-background.jpg')!important;
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    .header-background{
+        background-image: url('https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/pizza-background.jpg')!important;
+    }
 }
 
 
