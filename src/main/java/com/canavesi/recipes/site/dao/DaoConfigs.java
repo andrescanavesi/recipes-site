@@ -136,4 +136,22 @@ public class DaoConfigs {
         }
         return Integer.valueOf(value);
     }
+
+    public static boolean getEnablePushEngage() {
+        String value = System.getenv("ENABLE_PUSH_ENGAGE");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.valueOf(value);
+    }
+
+    public static String getDatagetPushEngageApiKey() {
+        String value = System.getenv("PUSH_ENGAGE_API_KEY");
+        if (value == null) {
+            //since this is a sensitive data we do not return a default value
+            throw new IllegalStateException("PUSH_ENGAGE_API_KEY environment variable not found");
+
+        }
+        return value;
+    }
 }
