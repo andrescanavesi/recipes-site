@@ -58,7 +58,7 @@ public class SiteMapServlet extends HttpServlet {
 
             for (RecipeEntity recipe : recipes) {
                 out.println("<url> ");
-                out.println("<loc>" + baseUrl + "/receta/" + recipe.getId() + "/" + recipe.getTitleForUrl() + "</loc> ");
+                out.println("<loc>" + baseUrl + "receta/" + recipe.getId() + "/" + recipe.getTitleForUrl() + "</loc> ");
                 out.println("<image:image>");
                 out.println("<image:loc>" + recipe.getFeaturedFullImageUrl() + "</image:loc>");
                 out.println("<image:caption>" + recipe.getTitle() + "</image:caption>");
