@@ -511,3 +511,12 @@ footer .copyright {
     font-weight: 800;
     background-image: url(../img/cream-pixels.png);
 }
+
+.input-search{
+    text-align: center;
+}
+
+.search-button{
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}

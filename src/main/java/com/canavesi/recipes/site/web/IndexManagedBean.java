@@ -44,6 +44,7 @@ public class IndexManagedBean {
     private String homeUpdatedAtFormatted;
     private Boolean onlyCeliacsRecipes = false;
     private String styleToHideHeaderCeliacos = "d-none";
+    private String wordToSearch = null;
 
     /**
      *
@@ -88,6 +89,11 @@ public class IndexManagedBean {
             styleToHideHeaderCeliacos = "";
         }
 
+        String search = params.get("search");
+        if (search != null) {
+            this.wordToSearch = search;
+        }
+
         try {
             loadRecipes();
         } catch (Exception e) {
@@ -99,20 +105,24 @@ public class IndexManagedBean {
         if (onlyCeliacsRecipes) {
             recipes = DaoRecipes.getInstance().findOnlyCeliacs(0, DaoConfigs.getPageSizeDB());
         } else {
-            recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());
+            if (this.wordToSearch != null) {
+                recipes = DaoRecipes.getInstance().findByWordInTitle(0, DaoConfigs.getPageSizeDB(), this.wordToSearch);
+            } else {
+                recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());
+            }
+
+            loadFeaturedRecipes();
+
+            RecipeEntity firstRecipe = recipes.get(0);
+            homeTitle = firstRecipe.getTitle();
+            homeDescription = firstRecipe.getDescriptionMeta();
+            if (onlyCeliacsRecipes) {
+                homeDescription += ". Recetas para celiacos";
+            }
+            homeUrlImage = firstRecipe.getFeaturedThumbnailImageUrl();
+            homeUpdatedAtFormatted = firstRecipe.getUpdatedAtFormatted();
+
         }
-
-        loadFeaturedRecipes();
-
-        RecipeEntity firstRecipe = recipes.get(0);
-        homeTitle = firstRecipe.getTitle();
-        homeDescription = firstRecipe.getDescriptionMeta();
-        if (onlyCeliacsRecipes) {
-            homeDescription += ". Recetas para celiacos";
-        }
-        homeUrlImage = firstRecipe.getFeaturedThumbnailImageUrl();
-        homeUpdatedAtFormatted = firstRecipe.getUpdatedAtFormatted();
-
     }
 
     private void loadFeaturedRecipes() {
@@ -236,6 +246,14 @@ public class IndexManagedBean {
 
     public String getStyleToHideHeaderCeliacos() {
         return styleToHideHeaderCeliacos;
+    }
+
+    public String getWordToSearch() {
+        return wordToSearch;
+    }
+
+    public void setWordToSearch(String wordToSearch) {
+        this.wordToSearch = wordToSearch;
     }
 
 }

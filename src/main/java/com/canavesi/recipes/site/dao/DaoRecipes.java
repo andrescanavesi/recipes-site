@@ -69,6 +69,17 @@ public class DaoRecipes {
         return recipe;
     }
 
+    public List<RecipeEntity> findByWordInTitle(int start, int end, String word) throws Exception {
+        List<RecipeEntity> allRecipes = find(start, end);
+        List<RecipeEntity> result = new ArrayList<>();
+        for (RecipeEntity recipe : allRecipes) {
+            if (recipe.getTitle().contains(word)) {
+                result.add(recipe);
+            }
+        }
+        return result;
+    }
+
     public List<RecipeEntity> findOnlyCeliacs(int start, int end) throws Exception {
         List<RecipeEntity> allRecipes = find(start, end);
         List<RecipeEntity> onlyCeliacs = new ArrayList<>();

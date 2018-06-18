@@ -8,6 +8,11 @@
         <view-id value="/recipe.xhtml" />
     </url-mapping>
 
+    <url-mapping id="search">
+        <pattern value="/buscar/#{search}" />
+        <view-id value="/index.xhtml" />
+    </url-mapping>
+
     <url-mapping id="about">
         <pattern value="/sobre-este-sitio" />
         <view-id value="/about.xhtml" />
