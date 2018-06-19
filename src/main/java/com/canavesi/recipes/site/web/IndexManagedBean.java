@@ -2,10 +2,12 @@ package com.canavesi.recipes.site.web;
 
 import com.canavesi.recipes.site.dao.DaoConfigs;
 import com.canavesi.recipes.site.dao.DaoRecipes;
+import com.canavesi.recipes.site.entities.BaseEntity;
 import com.canavesi.recipes.site.entities.RecipeEntity;
 import com.canavesi.recipes.site.exceptions.RecipeNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -94,6 +96,14 @@ public class IndexManagedBean {
             this.wordToSearch = search;
         }
 
+        homeTitle = "Recetas City | Las mejores recetas de cocina";
+        homeDescription = "Recetas City. Las mejores y mas faciles recetas de cocina.";
+        if (onlyCeliacsRecipes) {
+            homeDescription += ". Tambien recetas para celiacos";
+        }
+        homeUrlImage = "https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/medialunas.jpg";
+        homeUpdatedAtFormatted = BaseEntity.DATE_FORMAT.format(new Date());
+
         try {
             loadRecipes();
         } catch (Exception e) {
@@ -107,20 +117,12 @@ public class IndexManagedBean {
         } else {
             if (this.wordToSearch != null) {
                 recipes = DaoRecipes.getInstance().findByWordInTitle(0, DaoConfigs.getPageSizeDB(), this.wordToSearch);
+                homeTitle = "Recetas de " + this.wordToSearch + " | Recetas City";
             } else {
                 recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());
             }
 
             loadFeaturedRecipes();
-
-            RecipeEntity firstRecipe = recipes.get(0);
-            homeTitle = firstRecipe.getTitle();
-            homeDescription = firstRecipe.getDescriptionMeta();
-            if (onlyCeliacsRecipes) {
-                homeDescription += ". Recetas para celiacos";
-            }
-            homeUrlImage = firstRecipe.getFeaturedThumbnailImageUrl();
-            homeUpdatedAtFormatted = firstRecipe.getUpdatedAtFormatted();
 
         }
     }

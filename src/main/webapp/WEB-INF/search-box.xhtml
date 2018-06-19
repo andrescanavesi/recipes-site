@@ -1,0 +1,41 @@
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <script type="text/javascript">
+
+        var baseUrl = '#{indexManagedBean.baseUrl}';
+
+        function onSearchEnter(element) {
+            if (event.keyCode === 13) {
+                search();
+            }
+        }
+
+        function search() {
+            var word = document.getElementById('search').value;
+            if (word) {
+                if (word.length > 0) {
+                    var url = baseUrl + 'buscar/' + word;
+                    window.location = url;
+                }
+            }
+
+        }
+    </script>
+
+
+    <!--  Search bar-->
+    <div class="row mx-auto mt-3">
+        <div class="col-2"></div>
+        <div class="col-lg-8 col-md-10 ">
+            <input id="search" placeholder="'Faina' o 'Pizza' "
+                   onkeydown="onSearchEnter(this)"
+                   class ="form-control  form-control-lg input-search" />
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary search-button" onclick="search();">Buscar</button>
+        </div>
+    </div>
+
+</html>

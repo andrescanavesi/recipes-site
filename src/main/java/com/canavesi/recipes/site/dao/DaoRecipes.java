@@ -70,13 +70,15 @@ public class DaoRecipes {
     }
 
     public List<RecipeEntity> findByWordInTitle(int start, int end, String word) throws Exception {
+        LOG.log(Level.INFO, "Finiding receipes that contain {0}", word);
         List<RecipeEntity> allRecipes = find(start, end);
         List<RecipeEntity> result = new ArrayList<>();
         for (RecipeEntity recipe : allRecipes) {
-            if (recipe.getTitle().contains(word)) {
+            if (recipe.getTitle().toLowerCase().contains(word.toLowerCase())) {
                 result.add(recipe);
             }
         }
+        LOG.info("Recipes that contain '" + word + "' " + result.size());
         return result;
     }
 

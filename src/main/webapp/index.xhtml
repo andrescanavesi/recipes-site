@@ -6,14 +6,14 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-        <title>Recetas City: #{indexManagedBean.homeTitle}</title>
+        <title>#{indexManagedBean.homeTitle}</title>
     </ui:define>
 
     <ui:define name="meta-dynamic">
-        <meta name="title" content="Recetas City: #{indexManagedBean.homeTitle}"/>
-        <meta name="description" content="Recetas City: #{indexManagedBean.homeDescription}"/>
-        <meta property="og:title" content="Recetas City: #{indexManagedBean.homeTitle}" />
-        <meta property="og:description" content="Recetas City: #{indexManagedBean.homeDescription}" />
+        <meta name="title" content="#{indexManagedBean.homeTitle}"/>
+        <meta name="description" content="#{indexManagedBean.homeDescription}"/>
+        <meta property="og:title" content="#{indexManagedBean.homeTitle}" />
+        <meta property="og:description" content="#{indexManagedBean.homeDescription}" />
         <meta property="og:url" content="#{indexManagedBean.baseUrl}" />
         <meta property="og:image" content="#{indexManagedBean.homeUrlImage}" />
         <meta property="article:modified_time" content="#{indexManagedBean.homeUpdatedAtFormatted}" />
@@ -27,7 +27,7 @@
             "#{indexManagedBean.homeUrlImage}"
             ],
             "datePublished": "#{indexManagedBean.homeUpdatedAtFormatted}",
-            "description": "Recetas City | #{indexManagedBean.homeDescription}",
+            "description": "#{indexManagedBean.homeDescription}",
             "keywords": "receta,cocina,comida,facil"
             }
         </script>
@@ -66,16 +66,7 @@
         <!-- Main Content -->
         <div class="container">
 
-            <!--  Search bar-->
-            <div class="row mx-auto mt-3 d-none">
-                <div class="col-2"></div>
-                <div class="col-lg-8 col-md-10 ">
-                    <input id="search" placeholder="'Faina' o 'Pizza' "  class="form-control  form-control-lg input-search" />
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-primary search-button">Buscar</button>
-                </div>
-            </div>
+            <ui:include src="./WEB-INF/search-box.xhtml"/>
 
             <div class="row mx-auto">
 

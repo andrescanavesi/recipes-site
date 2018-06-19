@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd");
+    public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd");
 
     /**
      *
