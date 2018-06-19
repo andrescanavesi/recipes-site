@@ -5,6 +5,9 @@ import com.canavesi.recipes.site.dao.DaoRecipes;
 import com.canavesi.recipes.site.entities.RecipeEntity;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +39,7 @@ public class SiteMapServlet extends HttpServlet {
 
         List<RecipeEntity> recipes = DaoRecipes.getInstance().find(0, 1000);
         String baseUrl = DaoConfigs.getBaseUrl();
+        final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
         /**
          * Prints xml according to:
@@ -50,6 +54,9 @@ public class SiteMapServlet extends HttpServlet {
 
             out.println("<url> ");
             out.println("<loc>" + baseUrl + "</loc> ");
+            out.println("<lastmod>" + DATE_FORMAT.format(new Date()) + "</lastmod> ");
+            out.println("<changefreq>daily</changefreq> ");
+            out.println("<priority>1.0</priority> ");
             out.println("<image:image>");
             out.println("<image:loc>https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/recipe-default.png</image:loc>");
             out.println("<image:caption>Recetas City. Las mejores recetas de cocina</image:caption>");
@@ -59,6 +66,9 @@ public class SiteMapServlet extends HttpServlet {
             for (RecipeEntity recipe : recipes) {
                 out.println("<url> ");
                 out.println("<loc>" + baseUrl + "receta/" + recipe.getId() + "/" + recipe.getTitleForUrl() + "</loc> ");
+                out.println("<lastmod>" + DATE_FORMAT.format(recipe.getUpdatedAt()) + "</lastmod> ");
+                out.println("<changefreq>monthly</changefreq> ");
+                out.println("<priority>0.5</priority> ");
                 out.println("<image:image>");
                 out.println("<image:loc>" + recipe.getFeaturedFullImageUrl() + "</image:loc>");
                 out.println("<image:caption>" + recipe.getTitle() + "</image:caption>");
