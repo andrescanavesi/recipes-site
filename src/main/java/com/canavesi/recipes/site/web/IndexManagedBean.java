@@ -264,4 +264,12 @@ public class IndexManagedBean {
         return allRecipes;
     }
 
+    public Boolean getShowAdRecipeRight() {
+        return showAdRecipeRight;
+    }
+
+    public void setShowAdRecipeRight(Boolean showAdRecipeRight) {
+        this.showAdRecipeRight = showAdRecipeRight;
+    }
+
 }
