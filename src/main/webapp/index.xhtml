@@ -81,6 +81,13 @@
 
                 <div class="col-lg-8 col-md-10 ">
 
+                    <h:panelGrid columns="1" rendered="#{indexManagedBean.recipes.size() eq 0}">
+
+                        <div class="h4 mt-5">
+                            Lo sentimos pero no hemos encontrado recetas sobre '#{indexManagedBean.wordToSearch}'
+                        </div>
+                    </h:panelGrid>
+
 
                     <ui:repeat  var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus"  >
 
@@ -112,8 +119,7 @@
                                     </ul>
 
                                     <div class="mb-3 w-100">
-                                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=continue_reading_ingredients&amp;utm_medium=web"
-                                           >
+                                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=continue_reading_ingredients&amp;utm_medium=web">
                                             Seguir leyendo
                                         </a>
                                     </div>
@@ -147,8 +153,9 @@
             </div>
         </div>
 
+        <hr/>
 
-
+        <ui:include src="./WEB-INF/featured-recipes.xhtml"/>
         <ui:include src="./WEB-INF/all-recipes-list.xhtml"/>
 
     </ui:define>

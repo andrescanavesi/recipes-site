@@ -78,7 +78,7 @@ public class DaoRecipes {
                 result.add(recipe);
             }
         }
-        LOG.info("Recipes that contain '" + word + "' " + result.size());
+        LOG.log(Level.INFO, "Recipes that contain ''{0}'' {1}", new Object[]{word, result.size()});
         return result;
     }
 
@@ -143,33 +143,5 @@ public class DaoRecipes {
             }
         }
         throw new RecipeNotFoundException();
-//        LOG.info("Getting recipe from DB");
-//
-//        Connection connection = null;
-//        PreparedStatement preparedStatement = null;
-//        ResultSet resultSet = null;
-//        try {
-//            connection = DbHelper.getInstance().getConnection();
-//
-//            preparedStatement = connection.prepareStatement("SELECT * FROM recipes WHERE active=? AND id = ?");
-//            LOG.log(Level.FINE, "\n{0}", preparedStatement.toString());
-//            preparedStatement.setBoolean(1, true);
-//            preparedStatement.setLong(2, id);
-//            preparedStatement.setMaxRows(1);
-//
-//            resultSet = preparedStatement.executeQuery();
-//            RecipeEntity recipeEntity = null;
-//            if (resultSet.next()) {
-//                recipeEntity = convertToRecipeEntity(resultSet);
-//            } else {
-//                throw new RecipeNotFoundException();
-//            }
-//            return recipeEntity;
-//        } catch (DatabaseConfigurationException | RecipeNotFoundException | SQLException | ParseException e) {
-//            throw e;
-//        } finally {
-//            DbHelper.tryToCloseResources(resultSet, preparedStatement, connection);
-//        }
     }
-
 }

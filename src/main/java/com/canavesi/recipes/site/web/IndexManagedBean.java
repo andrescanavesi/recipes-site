@@ -29,6 +29,7 @@ public class IndexManagedBean {
 
     private static final Logger LOG = Logger.getLogger(IndexManagedBean.class.getName());
     private List<RecipeEntity> recipes;
+    private List<RecipeEntity> allRecipes;
     private List<RecipeEntity> featuredRecipes;
     private RecipeEntity recipeToDisplay;
     private Boolean isProduction;
@@ -106,12 +107,14 @@ public class IndexManagedBean {
 
         try {
             loadRecipes();
+            loadFeaturedRecipes();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     private void loadRecipes() throws Exception {
+        allRecipes = DaoRecipes.getInstance().find(0, 1000);
         if (onlyCeliacsRecipes) {
             recipes = DaoRecipes.getInstance().findOnlyCeliacs(0, DaoConfigs.getPageSizeDB());
         } else {
@@ -121,22 +124,19 @@ public class IndexManagedBean {
             } else {
                 recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());
             }
-
-            loadFeaturedRecipes();
-
         }
     }
 
-    private void loadFeaturedRecipes() {
+    private void loadFeaturedRecipes() throws Exception {
         List<RecipeEntity> recipesCopy = new ArrayList<>();
-        for (RecipeEntity recipe : recipes) {
+        for (RecipeEntity recipe : allRecipes) {
             recipesCopy.add(recipe);
         }
         Collections.shuffle(recipesCopy);
         featuredRecipes = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            if (i < recipes.size()) {
-                featuredRecipes.add(recipes.get(i));
+            if (i < allRecipes.size()) {
+                featuredRecipes.add(allRecipes.get(i));
             }
 
         }
@@ -256,6 +256,10 @@ public class IndexManagedBean {
 
     public void setWordToSearch(String wordToSearch) {
         this.wordToSearch = wordToSearch;
+    }
+
+    public List<RecipeEntity> getAllRecipes() {
+        return allRecipes;
     }
 
 }
