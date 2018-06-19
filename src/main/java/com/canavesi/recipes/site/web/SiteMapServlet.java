@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,7 +41,13 @@ public class SiteMapServlet extends HttpServlet {
         List<RecipeEntity> recipes = DaoRecipes.getInstance().find(0, 1000);
         String baseUrl = DaoConfigs.getBaseUrl();
         final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-
+        /**
+         * Keywords to generate url to search
+         */
+        String[] keywords = new String[]{"faina", "pizza", "tarta", "torta", "medialunas", "pasta%20frola", "vainillas", "sin%20gluten", "sin%20tacc",
+            "pan", "semillas", "arrolladitor", "manzana", "maiz", "harina", "mermelada", "calabaza", "naranja", "avena", "galletitas", "celiacos",
+            "panqueques", "queso", "torta%20de%20fiambre", "ajo", "oregano", "chocolate", "cookies", "churros", "budin", "marmolado",
+            "pascualina", "masa", "chips", "pancitos", "hojaldre", "vainilla", "cebolla", "parmesano"};
         /**
          * Prints xml according to:
          *
@@ -62,6 +69,23 @@ public class SiteMapServlet extends HttpServlet {
             out.println("<image:caption>Recetas City. Las mejores recetas de cocina</image:caption>");
             out.println("</image:image>");
             out.println("</url> ");
+
+            List<String> added = new ArrayList<>();
+            for (String keyword : keywords) {
+                if (!added.contains(keyword)) {
+                    out.println("<url> ");
+                    out.println("<loc>" + baseUrl + "buscar/" + keyword + "</loc> ");
+                    out.println("<lastmod>" + DATE_FORMAT.format(new Date()) + "</lastmod> ");
+                    out.println("<changefreq>weekly</changefreq> ");
+                    out.println("<priority>0.8</priority> ");
+                    out.println("<image:image>");
+                    out.println("<image:loc>https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/background-table-food.jpg</image:loc>");
+                    out.println("<image:caption>Recetas sobre " + keyword + "</image:caption>");
+                    out.println("</image:image>");
+                    out.println("</url> ");
+                }
+
+            }
 
             for (RecipeEntity recipe : recipes) {
                 out.println("<url> ");
