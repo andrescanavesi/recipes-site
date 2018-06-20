@@ -62,11 +62,6 @@
                 <ui:include src="./WEB-INF/search-box.xhtml"/>
                 <div class="row mx-auto">
                     <div class="col">
-                        <div class="only-desktop">
-                            <div class="position-fixed" >
-                                <ui:include src="./WEB-INF/banner-fixed-left.xhtml"/>
-                            </div>
-                        </div>
 
                     </div>
                     <div class="col-lg-8 col-md-10 ">
@@ -76,9 +71,6 @@
                                     #{indexManagedBean.recipeToDisplay.title}
                                 </h1>
                             </div>
-                            <ui:include src="./WEB-INF/banner-under-recipe-title.xhtml"/>
-
-
 
                             <img  data-src="#{indexManagedBean.recipeToDisplay.featuredFullImageUrl}"
                                   class="only-desktop img-fluid rounded" alt="Imagen receta"/>
@@ -114,6 +106,10 @@
                                     <li>#{step} </li>
                                 </ui:repeat>
                             </ol>
+
+                        </div>
+
+                        <div class="row">
                             <ui:include src="./WEB-INF/banner-steps.xhtml"/>
                         </div>
 
