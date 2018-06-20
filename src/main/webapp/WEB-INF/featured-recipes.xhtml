@@ -15,7 +15,7 @@
                 <ui:repeat  var="data" value="#{indexManagedBean.featuredRecipes}"  varStatus="dataStatus"  >
 
                     <div class="post-preview">
-                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=index_title&amp;utm_medium=web">
+                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
                             <h2 class="post-title">
                                 #{data.title}
                             </h2>
@@ -23,7 +23,7 @@
 
                         <div class="row">
                             <div class="col-8 col-md-4">
-                                <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=index_title&amp;utm_medium=web">
+                                <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
                                     <img data-src="#{data.featuredThumbnailImageUrl}" class="img-thumbnail rounded" alt="Imagen receta"/>
                                 </a>
 

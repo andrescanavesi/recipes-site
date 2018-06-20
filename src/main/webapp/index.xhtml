@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="site-heading">
-                            <a href="#{indexManagedBean.baseUrl}?utm_source=header_text&amp;utm_medium=web">
+                            <a href="#{indexManagedBean.baseUrl}">
                                 <h1>Recetas City</h1>
                                 <span class="subheading">Las mejores recetas de cocina</span>
                             </a>
@@ -96,7 +96,7 @@
                     <ui:repeat  var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus"  >
 
                         <div class="post-preview">
-                            <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=index_title&amp;utm_medium=web">
+                            <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
                                 <h2 class="post-title">
                                     #{data.title}
                                 </h2>
@@ -123,7 +123,7 @@
                                     </ul>
 
                                     <div class="mb-3 w-100">
-                                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=continue_reading_ingredients&amp;utm_medium=web">
+                                        <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
                                             Seguir leyendo
                                         </a>
                                     </div>

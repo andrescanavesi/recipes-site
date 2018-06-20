@@ -15,7 +15,7 @@
                     <div class="row">
                         <ui:repeat var="data" value="#{indexManagedBean.allRecipes}" varStatus="status" >
                             <div class="col-sm-4 mt-2">
-                                <a class="my-link" href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}?utm_source=all_recipes&amp;utm_medium=web">
+                                <a class="my-link" href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
                                     #{data.title}
 
                                 </a>
