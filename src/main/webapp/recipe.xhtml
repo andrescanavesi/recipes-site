@@ -92,6 +92,16 @@
                             </p>
                         </div>
 
+                    </div>
+                    <div class="col-sm-2">
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-lg-8 col-md-10 ">
                         <div class="row">
                             <h4 class="w-100">Ingredientes</h4>
                             <ul>
@@ -110,49 +120,49 @@
                             </ol>
 
                         </div>
-
                         <div class="row">
-                            <ui:include src="./WEB-INF/banner-steps.xhtml"/>
-                        </div>
+                            <a class="btn"  href="https://www.facebook.com/sharer/sharer.php?u=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}"
+                               target="_blank" rel="noopener"  onclick="gtag('event', 'share_facebook');">
+                                <button class="fa fa-facebook btn-facebook custom-btn-social">
+                                    <span class="pl-2 custom-btn-social-text">Compartir con Facebook</span>
+                                </button>
+                            </a>
 
+                            <a class="btn"  href="whatsapp://send?text=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}?utm_source=share_whatsapp&amp;utm_medium=web"
+                               target="_blank" rel="noopener"  onclick="gtag('event', 'share_whatsapp');">
+                                <button class="fa fa-whatsapp btn-whatsapp custom-btn-social">
+                                    <span class="pl-2 custom-btn-social-text">Compartir con Whatsapp</span>
+                                </button>
+                            </a>
+                        </div>
                     </div>
                     <div class="col-sm-2">
                         <ui:include src="./WEB-INF/banner-recipe-right.xhtml"/>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-                        <a class="btn"  href="https://www.facebook.com/sharer/sharer.php?u=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}"
-                           target="_blank" rel="noopener"  onclick="gtag('event', 'share_facebook');">
-                            <button class="fa fa-facebook btn-facebook custom-btn-social">
-                                <span class="pl-2 custom-btn-social-text">Compartir con Facebook</span>
-                            </button>
-                        </a>
-
-                        <a class="btn"  href="whatsapp://send?text=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}?utm_source=share_whatsapp&amp;utm_medium=web"
-                           target="_blank" rel="noopener"  onclick="gtag('event', 'share_whatsapp');">
-                            <button class="fa fa-whatsapp btn-whatsapp custom-btn-social">
-                                <span class="pl-2 custom-btn-social-text">Compartir con Whatsapp</span>
-                            </button>
-                        </a>
-
-
                     </div>
                 </div>
 
+
                 <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
                     <div class="col-lg-8 col-md-10 mx-auto text-center">
-                        <div class="card w-100 p-5">
+                        <div class="card w-100 p-3">
                             <a href="https://www.facebook.com/recetascity/?utm_source=recipe_like_image&amp;utm_medium=web">
                                 <img src="https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_300,q_auto,f_auto/facebook-like.jpg" class="img-fluid rounded mx-auto d-block" />
                             </a>
                         </div>
 
                     </div>
+                    <div class="col-sm-2">
+
+                    </div>
                 </div>
 
                 <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
                     <div class="col-lg-8 col-md-10 mx-auto text-center">
                         <div class="card w-100 p-5 mt-3">
                             <a href="#{indexManagedBean.baseUrl}suscribite?utm_source=button_recipe&amp;utm_medium=web">
@@ -161,12 +171,21 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-sm-2">
+
+                    </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
                     <div class="col-lg-8 col-md-10 mx-auto mt-3">
                         <div class="post-preview">
                             <span class="post-meta">Creada el dia #{indexManagedBean.recipeToDisplay.createdAtFormatted}</span>
                         </div>
+                    </div>
+                    <div class="col-sm-2">
+
                     </div>
                 </div>
             </div>
