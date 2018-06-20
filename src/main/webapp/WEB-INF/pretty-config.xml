@@ -33,4 +33,14 @@
         <view-id value="/index.xhtml?onlyCeliacsRecipes=true" />
     </url-mapping>
 
+    <url-mapping id="politica">
+        <pattern value="/politica-privacidad" />
+        <view-id value="/politica-privacidad.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="terminos">
+        <pattern value="/terminos-y-condiciones" />
+        <view-id value="/terminos-y-condiciones.xhtml" />
+    </url-mapping>
+
 </pretty-config>
