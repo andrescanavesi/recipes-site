@@ -96,7 +96,7 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     public String[] getKeywordsArray() {
         if (keywords != null) {
-            return keywords.split(",");
+            return keywords.replaceAll(", ", ",").split(",");
         }
         return null;
 

@@ -131,7 +131,15 @@
                                 </div>
 
                             </div>
-                            <p class="post-meta">Creada el dia #{data.createdAtFormatted}</p>
+                            <!-- keywords -->
+                            <div class="row">
+                                <ui:repeat var="keyword" value="#{data.keywordsArray}"  varStatus="dataStatus">
+                                    <a href="#{indexManagedBean.baseUrl}recetas/keyword/#{keyword}">
+                                        <h5><span class="badge badge-secondary ml-2 myBadge">#{keyword}</span></h5>
+                                    </a>
+
+                                </ui:repeat>
+                            </div>
                         </div>
                         <hr/>
                     </ui:repeat>

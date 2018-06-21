@@ -30,7 +30,18 @@
                             </div>
                             <div class="col-12 col-md-8">
                                 #{data.description}
+
                             </div>
+                        </div>
+
+                        <!-- keywords -->
+                        <div class="row mt-2 text-center">
+                            <ui:repeat var="keyword" value="#{data.keywordsArray}"  varStatus="dataStatus">
+                                <a href="#{indexManagedBean.baseUrl}recetas/keyword/#{keyword}">
+                                    <h5><span class="badge badge-light ml-2 myBadge">#{keyword}</span></h5>
+                                </a>
+
+                            </ui:repeat>
                         </div>
 
                     </div>
