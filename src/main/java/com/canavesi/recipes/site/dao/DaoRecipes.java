@@ -65,16 +65,17 @@ public class DaoRecipes {
         recipe.setFeaturedFullImageUrl(imagesBaseUrl + "c_fill,g_auto/w_600,q_auto,f_auto/" + imageName);
         recipe.setFeaturedThumbnailImageUrl(imagesBaseUrl + "c_fill,g_auto/w_300,q_auto,f_auto/" + imageName);
         recipe.setAptoCeliacos(resultSet.getBoolean("aptoceliacos"));
+        recipe.setKeywords(resultSet.getString("keywords"));
 
         return recipe;
     }
 
-    public List<RecipeEntity> findByWordInTitle(int start, int end, String word) throws Exception {
+    public List<RecipeEntity> find(int start, int end, String word, String keyword) throws Exception {
         LOG.log(Level.INFO, "Finiding receipes that contain {0}", word);
-        List<RecipeEntity> allRecipes = find(start, end);
+        List<RecipeEntity> allRecipes = DaoRecipes.this.find(start, end);
         List<RecipeEntity> result = new ArrayList<>();
         for (RecipeEntity recipe : allRecipes) {
-            if (recipe.getTitle().toLowerCase().contains(word.toLowerCase())) {
+            if ((word != null && recipe.getTitle().toLowerCase().contains(word.toLowerCase())) || (keyword != null && recipe.getKeywords().toLowerCase().contains(keyword.toLowerCase()))) {
                 result.add(recipe);
             }
         }
@@ -83,7 +84,7 @@ public class DaoRecipes {
     }
 
     public List<RecipeEntity> findOnlyCeliacs(int start, int end) throws Exception {
-        List<RecipeEntity> allRecipes = find(start, end);
+        List<RecipeEntity> allRecipes = DaoRecipes.this.find(start, end);
         List<RecipeEntity> onlyCeliacs = new ArrayList<>();
         for (RecipeEntity recipe : allRecipes) {
             if (recipe.getAptoCeliacos()) {

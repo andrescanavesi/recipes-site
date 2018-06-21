@@ -49,6 +49,7 @@ public class IndexManagedBean {
     private Boolean onlyCeliacsRecipes = false;
     private String styleToHideHeaderCeliacos = "d-none";
     private String wordToSearch = null;
+    private String keyword = null;
 
     /**
      *
@@ -99,6 +100,8 @@ public class IndexManagedBean {
             this.wordToSearch = search;
         }
 
+        this.keyword = params.get("keyword");
+
         homeTitle = "Recetas City | Las mejores recetas de cocina";
         homeDescription = "Recetas City. Las mejores y mas faciles recetas de cocina.";
         if (onlyCeliacsRecipes) {
@@ -120,8 +123,8 @@ public class IndexManagedBean {
         if (onlyCeliacsRecipes) {
             recipes = DaoRecipes.getInstance().findOnlyCeliacs(0, DaoConfigs.getPageSizeDB());
         } else {
-            if (this.wordToSearch != null) {
-                recipes = DaoRecipes.getInstance().findByWordInTitle(0, DaoConfigs.getPageSizeDB(), this.wordToSearch);
+            if (this.wordToSearch != null || this.keyword != null) {
+                recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB(), this.wordToSearch, this.keyword);
                 homeTitle = "Recetas de " + this.wordToSearch + " | Recetas City";
             } else {
                 recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());

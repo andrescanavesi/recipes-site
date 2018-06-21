@@ -121,6 +121,15 @@
                             </ol>
 
                         </div>
+                        <!-- keywords -->
+                        <div class="row">
+                            <ui:repeat var="keyword" value="#{indexManagedBean.recipeToDisplay.keywordsArray}"  varStatus="dataStatus">
+                                <a href="#{indexManagedBean.baseUrl}recetas/keyword/#{keyword}">
+                                    <h4><span class="badge badge-dark ml-2 myBadge">#{keyword}</span></h4>
+                                </a>
+
+                            </ui:repeat>
+                        </div>
                         <div class="row">
                             <a class="btn"  href="https://www.facebook.com/sharer/sharer.php?u=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}"
                                target="_blank" rel="noopener"  onclick="gtag('event', 'share_facebook');">

@@ -520,3 +520,7 @@ footer .copyright {
     padding-top: 12px !important;
     padding-bottom: 12px !important;
 }
+
+.myBadge{
+    text-transform: capitalize;
+}

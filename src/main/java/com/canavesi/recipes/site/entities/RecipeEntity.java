@@ -1,9 +1,6 @@
 package com.canavesi.recipes.site.entities;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  *
@@ -25,6 +22,10 @@ public class RecipeEntity extends BaseEntity implements Serializable {
      * comma separated
      */
     private String steps;
+    /**
+     * comma separated
+     */
+    private String keywords;
     private String featuredImageName;
     private String featuredFullImageUrl;
     private String featuredThumbnailImageUrl;
@@ -93,6 +94,14 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     }
 
+    public String[] getKeywordsArray() {
+        if (keywords != null) {
+            return keywords.split(",");
+        }
+        return null;
+
+    }
+
     public void setSteps(String steps) {
         this.steps = steps;
     }
@@ -127,6 +136,14 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     public void setAptoCeliacos(Boolean aptoCeliacos) {
         this.aptoCeliacos = aptoCeliacos;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
     }
 
 }

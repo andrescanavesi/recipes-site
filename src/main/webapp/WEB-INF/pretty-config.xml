@@ -43,4 +43,13 @@
         <view-id value="/terminos-y-condiciones.xhtml" />
     </url-mapping>
 
+    <url-mapping id="keyword">
+        <pattern value="/recetas/keyword/#{keyword}" />
+        <view-id value="/index.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="category">
+        <pattern value="/recetas/categoria/#{category}" />
+        <view-id value="/index.xhtml" />
+    </url-mapping>
 </pretty-config>
