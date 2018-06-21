@@ -66,6 +66,9 @@ public class DaoRecipes {
         recipe.setFeaturedThumbnailImageUrl(imagesBaseUrl + "c_fill,g_auto/w_300,q_auto,f_auto/" + imageName);
         recipe.setAptoCeliacos(resultSet.getBoolean("aptoceliacos"));
         recipe.setKeywords(resultSet.getString("keywords"));
+        recipe.setTotalTimeText(resultSet.getString("total_time_text"));
+        recipe.setTotalTimeMeta(resultSet.getString("total_time_meta"));
+        recipe.setCategory(resultSet.getString("category"));
 
         return recipe;
     }

@@ -30,6 +30,18 @@ public class RecipeEntity extends BaseEntity implements Serializable {
     private String featuredFullImageUrl;
     private String featuredThumbnailImageUrl;
     private Boolean aptoCeliacos;
+    /**
+     * The total time required to perform instructions or a direction (including
+     * time to prepare the supplies), in ISO 8601 duration format.
+     *
+     * Example: PT50M for 50 minutes
+     */
+    private String totalTimeMeta;
+    /**
+     * Example: 15 minutes or 2 hours
+     */
+    private String totalTimeText;
+    private String category;
 
     public String getTitle() {
         return title;
@@ -144,6 +156,56 @@ public class RecipeEntity extends BaseEntity implements Serializable {
 
     public void setKeywords(String keywords) {
         this.keywords = keywords;
+    }
+
+    public String getTotalTimeMeta() {
+        return totalTimeMeta;
+    }
+
+    public void setTotalTimeMeta(String totalTimeMeta) {
+        this.totalTimeMeta = totalTimeMeta;
+    }
+
+    public String getIngredientesMeta() {
+        String[] ingredientsArray = getIngredientsArray();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < ingredientsArray.length; i++) {
+            builder.append("\"").append(ingredientsArray[i]).append("\"");
+            if (i < (ingredientsArray.length - 1)) {
+                builder.append(",");
+            }
+        }
+        return builder.toString();
+    }
+
+    public String getStepsMeta() {
+        String[] stepsArray = getStepsArray();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < stepsArray.length; i++) {
+            builder.append("{\"@type\":\"HowToStep\",\"text\":\"")
+                    .append(stepsArray[i])
+                    .append("\"}");
+            if (i < (stepsArray.length - 1)) {
+                builder.append(",");
+            }
+        }
+        return builder.toString();
+    }
+
+    public String getTotalTimeText() {
+        return totalTimeText;
+    }
+
+    public void setTotalTimeText(String totalTimeText) {
+        this.totalTimeText = totalTimeText;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 }

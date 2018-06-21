@@ -32,7 +32,15 @@
             ],
             "datePublished": "#{indexManagedBean.recipeToDisplay.createdAtFormatted}",
             "description": "#{indexManagedBean.recipeToDisplay.descriptionMeta}",
-            "keywords": "receta,cocina,comida,facil"
+            "keywords": "#{indexManagedBean.recipeToDisplay.keywords}",
+            "author": {
+                "@type": "Website",
+                "name": "Recetas City"
+            },
+            "recipeIngredient": [#{indexManagedBean.recipeToDisplay.ingredientesMeta}],
+            "recipeInstructions": [#{indexManagedBean.recipeToDisplay.stepsMeta}],
+            "totalTime":"#{indexManagedBean.recipeToDisplay.totalTimeMeta}",
+            "recipeCategory":"#{indexManagedBean.recipeToDisplay.category}"
             }
         </script>
     </ui:define>
