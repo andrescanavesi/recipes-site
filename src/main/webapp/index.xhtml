@@ -90,12 +90,7 @@
 
                 <div class="col-lg-8 col-md-10 ">
 
-                    <h:panelGrid columns="1" rendered="#{indexManagedBean.recipes.size() eq 0}">
 
-                        <div class="h4 mt-5">
-                            Lo sentimos pero no hemos encontrado recetas sobre '#{indexManagedBean.wordToSearch}'
-                        </div>
-                    </h:panelGrid>
 
 
                     <ui:repeat  var="data" value="#{indexManagedBean.recipes}"  varStatus="dataStatus"  >
@@ -113,6 +108,15 @@
                                 </div>
                                 <div class="col-12 col-md-8">
                                     #{data.description}
+
+                                    <!-- Facebook like button-->
+                                    <div class="row float-right">
+                                        <div class="fb-like float-right"
+                                             data-href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}"
+                                             data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="true">
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -124,15 +128,12 @@
                                         <ui:repeat var="ingredient" value="#{data.ingredientsArray}"  varStatus="dataStatus">
                                             <li>#{ingredient} </li>
                                         </ui:repeat>
-
                                     </ul>
-
                                     <div class="mb-3 w-100">
                                         <a href="#{indexManagedBean.baseUrl}receta/#{data.id}/#{data.titleForUrl}">
                                             Seguir leyendo
                                         </a>
                                     </div>
-
                                 </div>
 
                             </div>

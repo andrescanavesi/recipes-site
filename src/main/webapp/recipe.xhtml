@@ -121,8 +121,17 @@
                             </ol>
 
                         </div>
+                        <!-- Facebook like button-->
+                        <div class="row float-right">
+                            <div class="fb-like float-right"
+                                 data-href="#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}"
+                                 data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="true">
+                            </div>
+
+                        </div>
+
                         <!-- keywords -->
-                        <div class="row">
+                        <div class="row float-left">
                             <ui:repeat var="keyword" value="#{indexManagedBean.recipeToDisplay.keywordsArray}"  varStatus="dataStatus">
                                 <a href="#{indexManagedBean.baseUrl}recetas/keyword/#{keyword}">
                                     <h4><span class="badge badge-dark ml-2 myBadge">#{keyword}</span></h4>
@@ -130,6 +139,8 @@
 
                             </ui:repeat>
                         </div>
+                        <div class="clearfix"></div>
+
                         <div class="row">
                             <a class="btn"  href="https://www.facebook.com/sharer/sharer.php?u=#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}"
                                target="_blank" rel="noopener"  onclick="gtag('event', 'share_facebook');">
