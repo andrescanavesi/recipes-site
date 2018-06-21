@@ -80,12 +80,10 @@
         <!-- Pinterest -->
         <script async="true" defer="true" src="//assets.pinterest.com/js/pinit.js"></script>
 
-        <h:panelGrid columns="1" rendered="#{appManagedBean.enablePushEngage}">
-            <!-- Push notifications -->
-            <script> window._peq = window._peq || []; window._peq.push(["init"]);</script>
-            <script async="true" src="https://clientcdn.pushengage.com/core/cced17583b4236b7c19853f3df2889d4.js" ></script>
+        <!-- Push notifications -->
+        <script> window._peq = window._peq || []; window._peq.push(["init"]);</script>
+        <script async="true" src="https://clientcdn.pushengage.com/core/cced17583b4236b7c19853f3df2889d4.js" ></script>
 
-        </h:panelGrid>
 
     </h:body>
 </html>
