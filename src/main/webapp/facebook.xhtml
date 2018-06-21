@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <!-- Page Header -->
+        <header class="masthead header-background">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="page-heading">
+                            <h1>Recetas City</h1>
+                            <span class="subheading">Dale a like para recibir todas las recetas!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto mt-5 text-center">
+
+                    <div class="fb-page" data-href="https://www.facebook.com/recetascity/" data-tabs="timeline" data-height="2000" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/recetascity/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/recetascity/">Recetas City</a></blockquote></div>
+
+                </div>
+            </div>
+            <hr/>
+
+        </div>
+
+        <hr/>
+
+        <ui:include src="./WEB-INF/featured-recipes.xhtml"/>
+        <ui:include src="./WEB-INF/all-recipes-list.xhtml"/>
+
+    </ui:define>
+
+
+</ui:composition>
+
+

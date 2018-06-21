@@ -52,4 +52,9 @@
         <pattern value="/recetas/categoria/#{category}" />
         <view-id value="/index.xhtml" />
     </url-mapping>
+
+    <url-mapping id="facebook">
+        <pattern value="/facebook" />
+        <view-id value="/facebook.xhtml" />
+    </url-mapping>
 </pretty-config>
