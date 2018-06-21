@@ -100,16 +100,25 @@ public class IndexManagedBean {
             this.wordToSearch = search;
         }
 
-        this.keyword = params.get("keyword");
-
         homeTitle = "Recetas City | Las mejores recetas de cocina";
-        homeDescription = "Recetas City. Las mejores y mas faciles recetas de cocina.";
+        homeDescription = "Recetas City. Las mejores y mas faciles recetas de cocina";
         if (onlyCeliacsRecipes) {
+            homeTitle = "Recetas para celiacos | Recetas City";
             homeDescription += ". Tambien recetas para celiacos";
         }
         homeUrlImage = "https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/medialunas.jpg";
         homeUpdatedAtFormatted = BaseEntity.DATE_FORMAT.format(new Date());
 
+        this.keyword = params.get("keyword");
+        if (this.keyword != null) {
+            homeTitle = "Recetas City | " + this.keyword;
+            homeDescription += ". Recetas de " + this.keyword;
+        }
+        //homeTitle = "Recetas de " + this.wordToSearch + " | Recetas City";
+        if (this.wordToSearch != null) {
+            homeTitle = "Recetas City | " + this.wordToSearch;
+            homeDescription += ". Recetas de " + this.wordToSearch;
+        }
         try {
             loadRecipes();
             loadFeaturedRecipes();
@@ -125,7 +134,6 @@ public class IndexManagedBean {
         } else {
             if (this.wordToSearch != null || this.keyword != null) {
                 recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB(), this.wordToSearch, this.keyword);
-                homeTitle = "Recetas de " + this.wordToSearch + " | Recetas City";
             } else {
                 recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());
             }
