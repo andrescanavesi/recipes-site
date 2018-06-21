@@ -75,7 +75,9 @@ public class DaoRecipes {
         List<RecipeEntity> allRecipes = DaoRecipes.this.find(start, end);
         List<RecipeEntity> result = new ArrayList<>();
         for (RecipeEntity recipe : allRecipes) {
-            if ((word != null && recipe.getTitle().toLowerCase().contains(word.toLowerCase())) || (keyword != null && recipe.getKeywords().toLowerCase().contains(keyword.toLowerCase()))) {
+            if ((word != null && recipe.getTitle().toLowerCase().contains(word.toLowerCase()))
+                    || (keyword != null && recipe.getKeywords().toLowerCase().contains(keyword.toLowerCase()))
+                    || (word != null && recipe.getKeywords().toLowerCase().contains(word.toLowerCase()))) {
                 result.add(recipe);
             }
         }
