@@ -162,4 +162,13 @@ public class DaoConfigs {
         }
         return value;
     }
+
+    public static int getQuantityFeaturedRecipes() {
+        String value = System.getenv("QUANTITY_FEATURED_RECIPES");
+        if (value == null) {
+            return 15;
+        }
+        return Integer.valueOf(value);
+    }
+
 }

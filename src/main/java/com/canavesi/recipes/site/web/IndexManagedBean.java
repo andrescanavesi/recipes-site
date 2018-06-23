@@ -147,9 +147,9 @@ public class IndexManagedBean {
         }
         Collections.shuffle(recipesCopy);
         featuredRecipes = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            if (i < allRecipes.size()) {
-                featuredRecipes.add(allRecipes.get(i));
+        for (int i = 0; i < DaoConfigs.getQuantityFeaturedRecipes(); i++) {
+            if (i < recipesCopy.size()) {
+                featuredRecipes.add(recipesCopy.get(i));
             }
 
         }
