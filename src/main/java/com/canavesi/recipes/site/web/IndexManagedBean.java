@@ -50,6 +50,7 @@ public class IndexManagedBean {
     private String styleToHideHeaderCeliacos = "d-none";
     private String wordToSearch = null;
     private String keyword = null;
+    private String ingredient = null;
 
     /**
      *
@@ -119,6 +120,13 @@ public class IndexManagedBean {
             homeTitle = "Recetas City | " + this.wordToSearch;
             homeDescription += ". Recetas de " + this.wordToSearch;
         }
+
+        this.ingredient = params.get("ingredient");
+        if (this.ingredient != null) {
+            homeTitle = "Recetas City | Recetas con " + this.ingredient;
+            homeDescription += ". Recetas con " + this.ingredient;
+        }
+
         try {
             loadRecipes();
             loadFeaturedRecipes();
@@ -132,8 +140,8 @@ public class IndexManagedBean {
         if (onlyCeliacsRecipes) {
             recipes = DaoRecipes.getInstance().findOnlyCeliacs(0, DaoConfigs.getPageSizeDB());
         } else {
-            if (this.wordToSearch != null || this.keyword != null) {
-                recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB(), this.wordToSearch, this.keyword);
+            if (this.wordToSearch != null || this.keyword != null || this.ingredient != null) {
+                recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB(), this.wordToSearch, this.keyword, this.ingredient);
             } else {
                 recipes = DaoRecipes.getInstance().find(0, DaoConfigs.getPageSizeDB());
             }

@@ -171,4 +171,17 @@ public class DaoConfigs {
         return Integer.valueOf(value);
     }
 
+    /**
+     *
+     * @return a list of ingredients to be used as metadata
+     */
+    public static String[] getMainIngredients() {
+        String value = System.getenv("MAIN_INGREDIENTS");
+        if (value == null) {
+            value = "manteca,vainilla,aceite,coco,bicarbonato,nueces,arroz,harina";
+
+        }
+        return value.toLowerCase().split(",");
+    }
+
 }

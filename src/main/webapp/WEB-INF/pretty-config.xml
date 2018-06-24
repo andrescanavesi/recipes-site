@@ -57,4 +57,9 @@
         <pattern value="/facebook" />
         <view-id value="/facebook.xhtml" />
     </url-mapping>
+
+    <url-mapping id="recipesWith">
+        <pattern value="/recetas/con/#{ingredient}" />
+        <view-id value="/index.xhtml" />
+    </url-mapping>
 </pretty-config>

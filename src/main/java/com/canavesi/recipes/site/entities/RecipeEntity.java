@@ -1,5 +1,6 @@
 package com.canavesi.recipes.site.entities;
 
+import com.canavesi.recipes.site.dao.DaoConfigs;
 import java.io.Serializable;
 
 /**
@@ -87,6 +88,26 @@ public class RecipeEntity extends BaseEntity implements Serializable {
             return ingredients.split("\n");
         }
         return null;
+
+    }
+
+    public String[] getIngredientsArrayWithLinks() {
+        String[] ingredientsArray = getIngredientsArray();
+        String[] ingredientsWithLinks = new String[ingredientsArray.length];
+        String[] mainIngredients = DaoConfigs.getMainIngredients();
+        String baseUrl = DaoConfigs.getBaseUrl();
+        for (int i = 0; i < ingredientsArray.length; i++) {
+            ingredientsWithLinks[i] = ingredientsArray[i].toLowerCase();
+            for (String mainIngredient : mainIngredients) {
+                if (ingredientsWithLinks[i].contains(mainIngredient)) {
+                    String link = " <a href=\"" + baseUrl + "recetas/con/" + mainIngredient + "\">" + mainIngredient + "</a> ";
+                    ingredientsWithLinks[i] = ingredientsWithLinks[i].replace(mainIngredient, link);
+                }
+
+            }
+
+        }
+        return ingredientsWithLinks;
 
     }
 

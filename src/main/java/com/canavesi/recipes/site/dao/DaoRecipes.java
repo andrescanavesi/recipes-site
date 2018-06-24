@@ -73,13 +73,14 @@ public class DaoRecipes {
         return recipe;
     }
 
-    public List<RecipeEntity> find(int start, int end, String word, String keyword) throws Exception {
+    public List<RecipeEntity> find(int start, int end, String word, String keyword, String ingredient) throws Exception {
         LOG.log(Level.INFO, "Finiding receipes that contain {0}", word);
         List<RecipeEntity> allRecipes = DaoRecipes.this.find(start, end);
         List<RecipeEntity> result = new ArrayList<>();
         for (RecipeEntity recipe : allRecipes) {
             if ((word != null && recipe.getTitle().toLowerCase().contains(word.toLowerCase()))
                     || (keyword != null && recipe.getKeywords().toLowerCase().contains(keyword.toLowerCase()))
+                    || (ingredient != null && recipe.getIngredients().toLowerCase().contains(ingredient.toLowerCase()))
                     || (word != null && recipe.getKeywords().toLowerCase().contains(word.toLowerCase()))) {
                 result.add(recipe);
             }

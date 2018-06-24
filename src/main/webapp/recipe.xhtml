@@ -113,9 +113,9 @@
                     <div class="col-lg-8 col-md-10 ">
                         <div class="row">
                             <h4 class="w-100">Ingredientes</h4>
-                            <ul>
-                                <ui:repeat var="ingredient" value="#{indexManagedBean.recipeToDisplay.ingredientsArray}"  varStatus="dataStatus">
-                                    <li>#{ingredient} </li>
+                            <ul class="ingredients">
+                                <ui:repeat var="ingredient" value="#{indexManagedBean.recipeToDisplay.ingredientsArrayWithLinks}"  varStatus="dataStatus">
+                                    <li><h:outputText escape="false" value="#{ingredient}" />  </li>
                                 </ui:repeat>
                             </ul>
                         </div>

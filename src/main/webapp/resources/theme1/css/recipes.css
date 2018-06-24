@@ -55,7 +55,7 @@ a:focus, a:hover {
 
 .ingredients a{
     color: #007bff;
-    text-decoration: none;
+    text-decoration: underline;
 
 }
 
