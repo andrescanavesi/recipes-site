@@ -34,8 +34,8 @@
             "description": "#{indexManagedBean.recipeToDisplay.descriptionMeta}",
             "keywords": "#{indexManagedBean.recipeToDisplay.keywords}",
             "author": {
-                "@type": "Website",
-                "name": "Recetas City"
+            "@type": "Website",
+            "name": "Recetas City"
             },
             "recipeIngredient": [#{indexManagedBean.recipeToDisplay.ingredientesMeta}],
             "recipeInstructions": [#{indexManagedBean.recipeToDisplay.stepsMeta}],
@@ -216,6 +216,22 @@
                     <div class="col-sm-2">
 
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
+                    <div class="col-lg-8 col-md-10 mx-auto mt-3">
+                        <div class="fb-comments"
+                             data-href="#{indexManagedBean.baseUrl}receta/#{indexManagedBean.recipeToDisplay.id}/#{indexManagedBean.recipeToDisplay.titleForUrl}"
+                             data-numposts="10"></div>
+                    </div>
+                    <div class="col-sm-2">
+
+                    </div>
+
+
                 </div>
             </div>
         </article>
