@@ -48,6 +48,8 @@ public class SiteMapServlet extends HttpServlet {
             "pascualina", "masa", "chips", "pancitos", "hojaldre", "vainilla", "cebolla", "parmesano"};
 
         String[] keywords = new String[]{"torta", "queso", "tarta", "vainilla", "hojaldre", "sin%20gluten", "celiacos", "sin%20tacc", "pan", "galletitas", "pizza", "tallarines"};
+
+        String[] mainIngredients = DaoConfigs.getMainIngredients();
         /**
          * Prints xml according to:
          *
@@ -99,6 +101,23 @@ public class SiteMapServlet extends HttpServlet {
                     out.println("<image:image>");
                     out.println("<image:loc>https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/background-table-food.jpg</image:loc>");
                     out.println("<image:caption>Recetas de " + keyword + "</image:caption>");
+                    out.println("</image:image>");
+                    out.println("</url> ");
+                }
+            }
+
+            List<String> ingredientAdded = new ArrayList<>();
+            for (String ingredient : mainIngredients) {
+                if (!ingredientAdded.contains(ingredient)) {
+                    ingredientAdded.add(ingredient);
+                    out.println("<url> ");
+                    out.println("<loc>" + baseUrl + "recetas/con/" + ingredient + "</loc> ");
+                    out.println("<lastmod>" + DATE_FORMAT.format(new Date()) + "</lastmod> ");
+                    out.println("<changefreq>weekly</changefreq> ");
+                    out.println("<priority>0.6</priority> ");
+                    out.println("<image:image>");
+                    out.println("<image:loc>https://res.cloudinary.com/dniiru5xy/image/upload/c_fill,g_auto/w_600,q_auto,f_auto/torta.jpg</image:loc>");
+                    out.println("<image:caption>Recetas con " + ingredient + "</image:caption>");
                     out.println("</image:image>");
                     out.println("</url> ");
                 }
